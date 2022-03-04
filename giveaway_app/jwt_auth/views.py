@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.exceptions import NotFound
-from .serializers.common import UserSerializer, UserUpdateSerializer
+from .serializers.common import UserSerializer
 from .serializers.populated import PopulatedUserSerializer
 from datetime import datetime, timedelta
 from django.conf import settings
@@ -59,7 +59,7 @@ class LoginView(APIView):
 
 class UserDetailView(APIView):
 
-    # permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def get_user(self, pk):
         try:
@@ -82,10 +82,12 @@ class UserDetailView(APIView):
 
     def put(self, request, pk):
         user_to_update = self.get_user(pk=pk)
-        # if request.user.id != user_to_update.id:
-        #     raise PermissionDenied(detail='Unauthorized')
-        serialized_user = UserUpdateSerializer(
-            user_to_update, data=request.data)
+
+        if request.user.id != user_to_update.id:
+            raise PermissionDenied(detail='Unauthorized')
+
+        serialized_user = UserSerializer(
+            user_to_update, data=request.data, partial=True)
 
         print('DATA -->', request.data)
         try:
@@ -95,8 +97,9 @@ class UserDetailView(APIView):
             serialized_user.save()
             return Response(serialized_user.data, status=status.HTTP_202_ACCEPTED)
         except AssertionError as e:
+            print('E ---->', e)
             return Response({"detail": str(e)}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         except:
-            Response(
+            return Response(
                 "Unprocessable Entity",
                 status=status.HTTP_422_UNPROCESSABLE_ENTITY)

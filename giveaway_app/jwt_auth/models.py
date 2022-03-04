@@ -22,7 +22,7 @@ class User(AbstractUser):
         related_name="jwt_auth",
         blank=True
     )
-    # region = models.ManyToManyField(
-    #     "regions.Region",
-    #     related_name = "jwt_auth"
-    # )
+    region = models.ManyToManyField(
+        "regions.Region",
+        related_name="jwt_auth"
+    )

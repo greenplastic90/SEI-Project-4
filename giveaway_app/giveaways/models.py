@@ -15,6 +15,7 @@ class Giveaway(models.Model):
         "jwt_auth.User",
         related_name="giveaways",
         on_delete=models.CASCADE,
+        blank=True
     )
     # category = models.ForeignKey(
     #     "categories.Category",
@@ -23,14 +24,15 @@ class Giveaway(models.Model):
     # )
     giveaway_images = ArrayField(models.CharField(
         max_length=500), size=3, null=True, blank=True)
-    # watcher_list = models.ManyToManyField(
-    #     "jwt_auth.User",
-    #     related_name = "giveaways"
-    # )
-    # region = models.ManyToManyField(
-    #     "regions.Region",
-    #     related_name = "giveaways"
-    # )
+    watcher_list = models.ManyToManyField(
+        "jwt_auth.User",
+        related_name="giveaway",
+        blank=True
+    )
+    region = models.ManyToManyField(
+        "regions.Region",
+        related_name="giveaways"
+    )
 
     def __str__(self):
         return f"{self.name} made by {self.owner}"

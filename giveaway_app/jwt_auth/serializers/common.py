@@ -14,22 +14,23 @@ class UserSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         print('DATA --->', data)
+        if data.get('password'):
 
-        password = data.pop('password')
-        password_confirmation = data.pop('password_confirmation')
+            password = data.pop('password')
+            password_confirmation = data.pop('password_confirmation')
 
-        if password != password_confirmation:
-            raise ValidationError(
-                {'password_confirmation': 'Does not match password'})
+            if password != password_confirmation:
+                raise ValidationError(
+                    {'password_confirmation': 'Does not match password'})
 
-        try:
-            password_validation.validate_password(password)
-        except ValidationError as error:
-            print('ValidationError --->', error)
-            raise ValidationError({'password': 'Invalid password'})
+            try:
+                password_validation.validate_password(password)
+            except ValidationError as error:
+                print('ValidationError --->', error)
+                raise ValidationError({'password': 'Invalid password'})
 
-        data['password'] = make_password(password)
-        print('HASHED PASSWORD --->', data['password'])
+            data['password'] = make_password(password)
+            print('HASHED PASSWORD --->', data['password'])
 
         return data
 
@@ -37,15 +38,4 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             'id', 'username', 'email', 'first_name', 'last_name', 'profile_image',
-            'following', 'followers', 'is_verified', 'bio', 'socials', 'password', 'password_confirmation', 'watchlist', 'giveaways')
-
-
-class UserUpdateSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)
-    password_confirmation = serializers.CharField(write_only=True)
-
-    class Meta:
-        model = User
-        fields = (
-            'id', 'username', 'email', 'first_name', 'last_name', 'profile_image',
-            'following', 'followers', 'is_verified', 'bio', 'socials', 'password', 'password_confirmation', 'watchlist', 'giveaways')
+            'following', 'followers', 'is_verified', 'bio', 'socials', 'password', 'password_confirmation', 'watchlist', 'region', 'giveaways')
