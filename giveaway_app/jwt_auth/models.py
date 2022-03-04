@@ -22,7 +22,8 @@ class User(AbstractUser):
         related_name="jwt_auth",
         blank=True
     )
-    region = models.ManyToManyField(
+    region = models.ForeignKey(
         "regions.Region",
-        related_name="jwt_auth"
+        related_name="jwt_auth",
+        on_delete=models.DO_NOTHING
     )

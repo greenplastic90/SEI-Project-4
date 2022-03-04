@@ -14,14 +14,14 @@ class Giveaway(models.Model):
     owner = models.ForeignKey(
         "jwt_auth.User",
         related_name="giveaways",
-        on_delete=models.CASCADE,
+        on_delete=models.DO_NOTHING,
         blank=True
     )
-    # category = models.ForeignKey(
-    #     "categories.Category",
-    #     related_name="giveaways",
-    #     on_delete=models.CASCADE,
-    # )
+    category = models.ForeignKey(
+        "categories.Category",
+        related_name="giveaways",
+        on_delete=models.DO_NOTHING
+    )
     giveaway_images = ArrayField(models.CharField(
         max_length=500), size=3, null=True, blank=True)
     watcher_list = models.ManyToManyField(
@@ -29,7 +29,7 @@ class Giveaway(models.Model):
         related_name="giveaway",
         blank=True
     )
-    region = models.ManyToManyField(
+    regions = models.ManyToManyField(
         "regions.Region",
         related_name="giveaways"
     )
