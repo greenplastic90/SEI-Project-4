@@ -19,7 +19,7 @@ class RegisterView(APIView):
 
     def post(self, request):
         print('Resquest --->', request.data)
-        user_to_create = UserSerializer(data=request.data)
+        user_to_create = UserSerializer(data=request.data, partial=True)
         print('user_to_create --->', user_to_create)
         try:
             user_to_create.is_valid()
@@ -85,6 +85,38 @@ class UserDetailView(APIView):
 
         if request.user.id != user_to_update.id:
             raise PermissionDenied(detail='Unauthorized')
+
+        serialized_user = UserSerializer(
+            user_to_update, data=request.data, partial=True)
+
+        print('DATA -->', request.data)
+        try:
+            serialized_user.is_valid()
+            print('SDATA -->', serialized_user.is_valid())
+            print('Here')
+            serialized_user.save()
+            return Response(serialized_user.data, status=status.HTTP_202_ACCEPTED)
+        except AssertionError as e:
+            print('E ---->', e)
+            return Response({"detail": str(e)}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        except:
+            return Response(
+                "Unprocessable Entity",
+                status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+
+class RelatedUserDetailView(APIView):
+
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+    def get_user(self, pk):
+        try:
+            return User.objects.get(pk=pk)
+        except User.DoesNotExist:
+            raise NotFound(detail="User not found")
+
+    def put(self, request, pk):
+        user_to_update = self.get_user(pk=pk)
 
         serialized_user = UserSerializer(
             user_to_update, data=request.data, partial=True)

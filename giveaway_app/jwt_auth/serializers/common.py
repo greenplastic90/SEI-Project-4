@@ -34,8 +34,11 @@ class UserSerializer(serializers.ModelSerializer):
 
         return data
 
+    # class Meta:
+    #     model = User
+    #     fields = ('__all__')
     class Meta:
         model = User
         fields = (
             'id', 'username', 'email', 'first_name', 'last_name', 'profile_image',
-            'following', 'followers', 'is_verified', 'bio', 'socials', 'password', 'password_confirmation', 'watchlist', 'region', 'giveaways')
+            'following', 'followers', 'is_verified', 'bio', 'socials', 'password', 'password_confirmation', 'watchlist', 'region', 'giveaways', 'is_verified', 'date_joined')

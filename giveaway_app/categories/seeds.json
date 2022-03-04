@@ -1,0 +1,12 @@
+[
+	{
+		"model": "categories.category",
+		"pk": 1,
+		"fields": { "name": "Holidays" }
+	},
+	{
+		"model": "categories.category",
+		"pk": 2,
+		"fields": { "name": "Electronics" }
+	}
+]

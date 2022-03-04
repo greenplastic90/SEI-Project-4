@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'giveaways',
     'categories',
     'comments',
-    'comments_likes',
     'regions'
 ]
 
