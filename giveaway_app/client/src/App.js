@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Home from './components/home/Home'
+import RegLog from './components/auth/RegLog'
 import NavBar from './components/navbar/NavBar'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 				<Route path='/' element={<Home />} />
 				<Route path='/login' element={<Login />} />
 				<Route path='/register' element={<Register />} />
+				<Route path='/register-login' element={<RegLog />} />
 			</Routes>
 		</BrowserRouter>
 	)
