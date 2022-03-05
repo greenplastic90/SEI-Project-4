@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { getPayload } from '../../enviroment/auth'
 import {
 	Heading,
 	VStack,
@@ -37,10 +36,6 @@ const Login = () => {
 		try {
 			const { data } = await axios.post('/api/auth/login/', formData)
 			setLocalToken(data.token)
-			const payload = getPayload()
-			const userId = payload.sub
-			window.localStorage.setItem('giveaway-userId', userId) // why are we getting the user ID and saving it to local storage?
-			console.log('📮', userId)
 			navigate('/')
 		} catch (error) {
 			setFormError(error.response)

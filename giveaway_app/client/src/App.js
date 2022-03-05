@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 // Components
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
+import NavBar from './components/navbar/NavBar'
 
 function App() {
 	useEffect(() => {
@@ -20,10 +21,11 @@ function App() {
 	}, [])
 	return (
 		<BrowserRouter>
+			<NavBar />
 			<Routes>
-                <Route path='/login' element={<Login/>} />
-                <Route path='/register' element={<Register/>} />
-            </Routes>
+				<Route path='/login' element={<Login />} />
+				<Route path='/register' element={<Register />} />
+			</Routes>
 		</BrowserRouter>
 	)
 }
