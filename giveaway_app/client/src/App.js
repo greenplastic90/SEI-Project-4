@@ -2,6 +2,10 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+// Components
+import Login from './components/auth/Login'
+import Register from './components/auth/Register'
+
 function App() {
 	useEffect(() => {
 		const getGiveaways = async () => {
@@ -16,7 +20,10 @@ function App() {
 	}, [])
 	return (
 		<BrowserRouter>
-			<Routes></Routes>
+			<Routes>
+                <Route path='/login' element={<Login/>} />
+                <Route path='/register' element={<Register/>} />
+            </Routes>
 		</BrowserRouter>
 	)
 }

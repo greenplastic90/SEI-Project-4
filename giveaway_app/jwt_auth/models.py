@@ -25,5 +25,6 @@ class User(AbstractUser):
     region = models.ForeignKey(
         "regions.Region",
         related_name="jwt_auth",
-        on_delete=models.DO_NOTHING
+        on_delete=models.DO_NOTHING,
+        default=1
     )
