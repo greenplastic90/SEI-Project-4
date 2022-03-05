@@ -3,8 +3,7 @@ import axios from 'axios'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // Components
-import Login from './components/auth/Login'
-import Register from './components/auth/Register'
+import RegLog from './components/auth/RegLog'
 import NavBar from './components/navbar/NavBar'
 
 function App() {
@@ -23,8 +22,7 @@ function App() {
 		<BrowserRouter>
 			<NavBar />
 			<Routes>
-				<Route path='/login' element={<Login />} />
-				<Route path='/register' element={<Register />} />
+				<Route path='/Registerlogin' element={<RegLog />} />
 			</Routes>
 		</BrowserRouter>
 	)

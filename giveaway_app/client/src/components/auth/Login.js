@@ -47,20 +47,20 @@ const Login = () => {
 		<VStack>
 			<Box>
 				<Heading size='2xl'>Login</Heading>
-				<Text my={4}>
+				{/* <Text my={4}>
 					If you don't have an account, click here to register.
-				</Text>
-				<FormControl mt={2}>
+				</Text> */}
+				<FormControl my={2}>
 					<FormLabel htmlFor='email'>Email</FormLabel>
 					<Input
 						onChange={handleChange}
 						type='email'
 						name='email'
 						defaultValue={formData.email}
-						placeholder='example@email.com'
+						placeholder='example@mail.com'
 					/>
 				</FormControl>
-				<FormControl mt={2}>
+				<FormControl my={2}>
 					<FormLabel>Password</FormLabel>
 					<Input
 						onChange={handleChange}
