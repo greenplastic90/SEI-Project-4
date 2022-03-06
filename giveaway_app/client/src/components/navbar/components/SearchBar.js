@@ -9,7 +9,7 @@ import {
 
 const SearchBar = () => {
 	return (
-		<Box w={{ base: '60%', md: '40%' }}>
+		<Box w={{ base: '40%', md: '40%' }}>
 			<InputGroup>
 				<Input type='text' placeholder='I want..' />
 				<InputRightElement width='4.5rem'>

@@ -5,7 +5,7 @@ import User from './button-groups/User'
 import VerifiedUser from './button-groups/VerifiedUser'
 import MenuItem from './MenuItem'
 import { userIsAuthenticated } from '../../../enviroment/auth'
-import DarkModeToggle from './DarkModeToggle'
+
 import { useNavigate } from 'react-router'
 
 const MenuLinks = ({ isOpen, mdDisplay }) => {
@@ -29,7 +29,6 @@ const MenuLinks = ({ isOpen, mdDisplay }) => {
 				direction='row'
 				pt={[4, 4, 0, 0]}
 			>
-				<DarkModeToggle />
 				<MenuItem to='/'>Home</MenuItem>
 				{userIsAuthenticated() ? (
 					<>
