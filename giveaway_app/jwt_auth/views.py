@@ -7,6 +7,7 @@ from rest_framework.exceptions import NotFound
 from .serializers.common import UserSerializer
 from .serializers.populated import PopulatedUserSerializer
 from datetime import datetime, timedelta
+from django.db import IntegrityError
 from django.conf import settings
 import jwt
 
@@ -25,7 +26,10 @@ class RegisterView(APIView):
             user_to_create.is_valid()
             user_to_create.save()
             return Response(user_to_create.data, status=status.HTTP_201_CREATED)
+        except AssertionError as e:
+            return Response({"detail": str(e)}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         except:
+            print("There was an error")
             return Response("Failed to create user", status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 

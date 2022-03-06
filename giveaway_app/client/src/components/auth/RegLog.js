@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Container, Divider } from '@chakra-ui/react'
+import { Flex, Container } from '@chakra-ui/react'
 
 // Components
 import Login from './Login'

@@ -22,5 +22,6 @@ urlpatterns = [
     path('api/profile/', include('jwt_auth.urls')),
     path('api/giveaways/', include('giveaways.urls')),
     path('api/giveaways/comments/', include('comments.urls')),
-
+    path('api/regions/', include('regions.urls')),
+    path('api/categories/', include('categories.urls'))
 ]

@@ -13,7 +13,7 @@ import {
     Container
 } from '@chakra-ui/react'
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
     const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
@@ -38,18 +38,24 @@ const Login = () => {
             const { data } = await axios.post('/api/auth/login/', formData)
             setLocalToken(data.token)
             navigate('/')
+            setIsLoggedIn(true)
         } catch (error) {
             setFormError(error.response)
             console.log('📮', error)
         }
     }
 
+    const handleNavigate = () => {
+        navigate('/register')
+    }
+
+
     return (
-        <Container maxW="container.sm" p={0}>
+        <Container maxW="container.sm" p={0}  >
             <VStack w="full" h="full" p={10} alignItems="stretch" spacing={10}>
                 <Box>
                     <Heading size='2xl'>Login</Heading>
-                    <Text my={4}>If you don't have an account, <Button variant="link" colorScheme="black">click here to register</Button>.</Text>
+                    <Text my={4}>If you don't have an account, <Button onClick={handleNavigate} variant="link" colorScheme="black">click here to register</Button>.</Text>
                     <FormControl my={2}>
                         <FormLabel htmlFor='email'>Email</FormLabel>
                         <Input
@@ -58,6 +64,7 @@ const Login = () => {
                             name='email'
                             defaultValue={formData.email}
                             placeholder='example@mail.com'
+                            onKeyPress={e => {e.key === 'Enter' && handleSubmit()}}
                         />
                     </FormControl>
                     <FormControl my={2}>
@@ -68,6 +75,7 @@ const Login = () => {
                             name='password'
                             placeholder='Password'
                             defaultValue={formData.password}
+                            onKeyPress={e => {e.key === 'Enter' && handleSubmit()}}
                         />
                     </FormControl>
                     <Button onClick={handleSubmit} size='lg' w='full' type='submit'>
