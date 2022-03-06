@@ -28,3 +28,7 @@ class User(AbstractUser):
         on_delete=models.DO_NOTHING,
         default=1
     )
+
+    def __str__(self):
+        user_type = "Verified User" if self.is_verified else "User"
+        return f"{self.username} - ({user_type}-{self.id})"
