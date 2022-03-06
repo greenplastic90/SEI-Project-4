@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+
 import {
 	Heading,
 	VStack,
-	Text,
 	FormControl,
 	FormLabel,
 	Input,
@@ -12,7 +12,7 @@ import {
 	Box,
 } from '@chakra-ui/react'
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
 	const navigate = useNavigate()
 
 	const [formData, setFormData] = useState({
@@ -28,14 +28,15 @@ const Login = () => {
 		setFormError('')
 	}
 
-	const setLocalToken = (token) => {
+	const saveTokenToLocalStorage = (token) => {
 		window.localStorage.setItem('giveaway-token', token)
 	}
 
 	const handleSubmit = async (e) => {
 		try {
 			const { data } = await axios.post('/api/auth/login/', formData)
-			setLocalToken(data.token)
+			saveTokenToLocalStorage(data.token)
+
 			navigate('/')
 		} catch (error) {
 			setFormError(error.response)
