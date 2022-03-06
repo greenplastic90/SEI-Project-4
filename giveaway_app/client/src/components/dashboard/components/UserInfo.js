@@ -4,11 +4,11 @@ import CreateGiveaway from './sub-components/CreateGiveaway'
 import FollowerCount from './sub-components/FollowerCount'
 import ProfilePhoto from './sub-components/ProfilePhoto'
 
-const UserInfo = ({ user }) => {
+const UserInfo = ({ user, regions, categories }) => {
 	return (
 		<VStack>
 			<ProfilePhoto photo={user.profile_image} />
-			<CreateGiveaway />
+			<CreateGiveaway regions={regions} categories={categories} />
 			<FollowerCount />
 		</VStack>
 	)

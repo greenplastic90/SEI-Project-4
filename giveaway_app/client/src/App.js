@@ -15,24 +15,50 @@ import { getPayload } from './enviroment/auth'
 
 function App() {
 	const [userIDFromToken, setUserIDFromToken] = useState(0)
-	const [user, setUser] = useState({ is_valid: false }) // is verified is set to whatever boolean just so passing it in the NavBar as undefined doesn't crash it.
+	// is verified is set to whatever boolean just so passing it in the NavBar as undefined doesn't crash it.
+	const [user, setUser] = useState({ is_valid: false })
+	const [regions, setRegions] = useState([
+		{ id: 1, name: 'NA' },
+		{ id: 2, name: 'EU' },
+	])
+	const [categories, setCategories] = useState([
+		{ id: 1, name: 'Holidays' },
+		{ id: 2, name: 'Electronics' },
+	])
 
 	// try useLayoutEffect if this works
 	useEffect(() => {
 		setUserIDFromToken(getPayload())
+		console.log('payload')
 	}, [])
 
 	// Get logged in user info
 	useEffect(() => {
 		const getUser = async (id) => {
-			const { data } = await axios.get(`api/profile/${id}/`)
-			setUser(data)
+			try {
+				const { data } = await axios.get(`api/profile/${id}/`)
+				setUser(data)
+			} catch (error) {
+				console.log(error)
+			}
 		}
 
 		if (userIDFromToken) {
 			getUser(userIDFromToken.sub)
 		}
 	}, [userIDFromToken])
+
+	// Get Regions
+	// useEffect(() => {
+	// 	const getRegions = async () => {
+	//         try {
+	//             const {data} = await axios.get('')
+	//         } catch (error) {
+	//             console.log(error)
+	//         }
+	//     }
+	//     getRegions()
+	// }, [])
 
 	// Get All Giveaways
 	useEffect(() => {
@@ -58,7 +84,13 @@ function App() {
 						<Route path='/register' element={<Register />} />
 						<Route
 							path='/dashboard'
-							element={<Dashboard user={user} />}
+							element={
+								<Dashboard
+									user={user}
+									regions={regions}
+									categories={categories}
+								/>
+							}
 						/>
 						<Route path='/register-login' element={<RegLog />} />
 					</Routes>
