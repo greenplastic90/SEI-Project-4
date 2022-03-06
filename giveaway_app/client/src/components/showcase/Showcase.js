@@ -5,6 +5,7 @@ const Showcase = () => {
 	return (
 		<>
 			<Text>Showcase</Text>
+            
 		</>
 	)
 }
