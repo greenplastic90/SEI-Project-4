@@ -21,7 +21,6 @@ const MenuLinks = ({ isOpen, mdDisplay }) => {
 			display={{ base: isOpen ? 'block' : 'none', md: mdDisplay }}
 			flexBasis={{ base: '100%', md: 'auto' }}
 		>
-			{console.log('isAuthenticated -->', userIsAuthenticated())}
 			<Stack
 				spacing={[2, 8, 8, 8]}
 				align='center'
