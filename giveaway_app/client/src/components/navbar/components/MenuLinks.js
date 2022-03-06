@@ -8,7 +8,7 @@ import { userIsAuthenticated } from '../../../enviroment/auth'
 
 import { useNavigate } from 'react-router'
 
-const MenuLinks = ({ isOpen, mdDisplay }) => {
+const MenuLinks = ({ isOpen, mdDisplay, isVerified }) => {
 	const navigate = useNavigate()
 
 	const handleLogout = () => {
@@ -31,8 +31,8 @@ const MenuLinks = ({ isOpen, mdDisplay }) => {
 				<MenuItem to='/'>Home</MenuItem>
 				{userIsAuthenticated() ? (
 					<>
-						<VerifiedUser />
-						<User />
+						{isVerified ? <VerifiedUser /> : <User />}
+
 						<MenuItem func={handleLogout} to='/'>
 							Logout
 						</MenuItem>

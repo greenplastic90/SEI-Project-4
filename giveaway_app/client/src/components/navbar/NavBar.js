@@ -4,9 +4,9 @@ import MenuLinks from './components/MenuLinks'
 import MenuToggle from './components/MenuToggle'
 import SearchBar from './components/SearchBar'
 import DarkModeToggle from './components/DarkModeToggle'
-import { VStack, HStack, Box } from '@chakra-ui/react'
+import { VStack, HStack } from '@chakra-ui/react'
 
-const NavBar = () => {
+const NavBar = ({ isVerified }) => {
 	const [isOpen, setIsOpen] = React.useState(false)
 
 	const toggle = () => setIsOpen(!isOpen)
@@ -21,10 +21,14 @@ const NavBar = () => {
 				<HStack spacing={4}>
 					<DarkModeToggle />
 					<MenuToggle toggle={toggle} isOpen={isOpen} />
-					<MenuLinks mdDisplay='block' />
+					<MenuLinks isVerified={isVerified} mdDisplay='block' />
 				</HStack>
 			</HStack>
-			<MenuLinks mdDisplay='none' isOpen={isOpen} />
+			<MenuLinks
+				isVerified={isVerified}
+				mdDisplay='none'
+				isOpen={isOpen}
+			/>
 		</VStack>
 	)
 }
