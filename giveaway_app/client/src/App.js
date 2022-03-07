@@ -22,6 +22,8 @@ function App() {
 	const [regions, setRegions] = useState([{ id: null, name: '' }])
 	const [categories, setCategories] = useState([{ id: null, name: '' }])
 
+	const [createdGiveaway, setCreatedGiveaway] = useState({})
+
 	// try useLayoutEffect if this works
 	useEffect(
 		() => {
@@ -93,18 +95,22 @@ function App() {
 	}, [])
 
 	// Get All Giveaways
-	useEffect(() => {
-		const getGiveaways = async () => {
-			try {
-				const { data } = await axios.get('api/giveaways/')
-				setGivaeaways(data)
-				console.log(giveaways)
-			} catch (err) {
-				console.log(err)
+	useEffect(
+		() => {
+			const getGiveaways = async () => {
+				try {
+					const { data } = await axios.get('api/giveaways/')
+					setGivaeaways(data)
+					// console.log(giveaways)
+				} catch (err) {
+					console.log(err)
+				}
 			}
-		}
-		getGiveaways()
-	}, [])
+			getGiveaways()
+		},
+		[createdGiveaway],
+		[]
+	)
 
 	return (
 		<BrowserRouter>
@@ -128,6 +134,7 @@ function App() {
 									user={user}
 									regions={regions}
 									categories={categories}
+									setCreatedGiveaway={setCreatedGiveaway}
 								/>
 							}
 						/>
