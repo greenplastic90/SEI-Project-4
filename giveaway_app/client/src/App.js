@@ -21,6 +21,7 @@ function App() {
 	const [user, setUser] = useState({ is_valid: false })
 	const [regions, setRegions] = useState([{ id: null, name: '' }])
 	const [categories, setCategories] = useState([{ id: null, name: '' }])
+
 	// try useLayoutEffect if this works
 	useEffect(
 		() => {
@@ -97,6 +98,7 @@ function App() {
 			try {
 				const { data } = await axios.get('api/giveaways/')
 				setGivaeaways(data)
+
 			} catch (err) {
 				console.log(err)
 			}
