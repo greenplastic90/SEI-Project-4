@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Text, VStack } from '@chakra-ui/react'
+import { Text, HStack, Container } from '@chakra-ui/react'
 import { useParams } from 'react-router'
 import axios from 'axios'
 
@@ -9,30 +9,31 @@ import CommentSection from './CommentSection'
 const Showcase = () => {
     const { id } = useParams()
     const [giveaway, setGiveaway] = useState({})
+    const [isNewComment, setNewComment] = useState(false)
 
     useEffect(() => {
         console.log(id)
         const getGiveaway = async () => {
             try {
                 const res = await axios.get(`/api/giveaways/${id}/`)
-                console.log(res)
+                // console.log(res)
                 setGiveaway(res.data)
             } catch (err) {
                 console.log(err)
             }
         }
         getGiveaway()
-    }, [id])
+    }, [id, isNewComment])
 
     return (
-        <>
-            <VStack>
+        <Container maxW="container.xl" padding={0}>
+            <HStack>
                 <Text>Showcase</Text>
-            </VStack>
-            <VStack>
-                <CommentSection giveaway={giveaway}/>
-            </VStack>
-        </>
+            </HStack>
+            <HStack flexDirection={'column'}>
+                <CommentSection giveaway={giveaway} setNewComment={setNewComment}/>
+            </HStack>
+        </Container>
     )
 }
 
