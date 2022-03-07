@@ -25,13 +25,11 @@ class CommentView(APIView):
             return Response(serialized_review.data, status=status.HTTP_201_CREATED)
         except AssertionError as e:
             print(str(e))
+            return Response({"detail": serialized_review.errors}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        except:
             return Response({
-                "detail": str(e)
+                "detail": "Unprocessable Entity"
             }, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
-        # except:
-        #     return Response({
-        #         "detail": "Unprocessable Entity"
-        #     }, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 
 class CommentDetailView(APIView):
