@@ -1,11 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
 import { Text, VStack, Box, Flex, HStack, Image, Button, Divider, Tag, AspectRatio } from '@chakra-ui/react'
+import { userIsAuthenticated, getPayload } from '../../../enviroment/auth'
+
+// Components
+import CommentButtons from './CommentButtons'
 
 const CommentCard = ({ comment }) => {
 
     const userIsOwner = () => {
-        //A function to check is logged in user is owner?
-        return false
+        const payload = getPayload()
+        return payload.sub
     }
 
     return (
@@ -18,19 +22,14 @@ const CommentCard = ({ comment }) => {
                     <VStack>
                         <Box>
                             <Text>
-                                {comment.owner.username}: {comment.text}
+                                <Tag variant="outline" colorScheme={userIsOwner() === comment.owner.id ? 'teal' : 'yellow'}>{comment.owner.username}:</Tag> {comment.text}
                             </Text>
-                            <Tag textAlign={'right'}>Posted: {comment.created_at.slice(0, 10)}</Tag>
+                            <Tag size={'sm'} textAlign={'right'}>Posted: {comment.created_at.slice(0, 10)}</Tag>
                         </Box>
                         <Divider />
                     </VStack>
                 </HStack>
-                {userIsOwner() &&
-                    <HStack>
-                        <Button>Edit</Button>
-                        <Button>Delete</Button>
-                    </HStack>
-                }
+                {userIsOwner() === comment.owner.id && <CommentButtons />}
                 <HStack>
                     <Divider />
                 </HStack>
