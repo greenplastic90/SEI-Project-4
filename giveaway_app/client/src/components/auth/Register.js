@@ -32,9 +32,9 @@ const Register = () => {
         try {
             await axios.post('/api/auth/register/', formData)
             navigate('/login')
-        } catch (error) {
-            setFormErrors({ ...formErrors, ...error.response.data.errors })
-            console.log(error.response)
+        } catch (err) {
+            setFormErrors({ ...formErrors, ...err.response.data.detail })
+            console.log(err.response)
         }
     }
 
@@ -51,20 +51,24 @@ const Register = () => {
                     <FormControl my={2}>
                         <FormLabel htmlFor='username'>Username</FormLabel>
                         <Input onChange={handleChange} type='text' placeholder='Username' name='username' defaultValue={formData.username} />
+                        {formErrors.username && <Text fontSize={'small'} color={'red'}>{formErrors.username}</Text>}
                     </FormControl>
                     <FormControl my={2}>
                         <FormLabel htmlFor='email'>Email Address</FormLabel>
                         <Input onChange={handleChange} type='email' placeholder='example@mail.com' name='email' defaultValue={formData.email} />
+                        {formErrors.email && <Text fontSize={'small'} color={'red'}>{formErrors.email}</Text>}
                     </FormControl>
                     <FormControl my={2}>
                         <FormLabel htmlFor='password'>Password</FormLabel>
                         <Input onChange={handleChange} type='password' placeholder='Password' name='password' defaultValue={formData.password} />
+                        {formErrors.password && <Text fontSize={'small'} color={'red'}>{formErrors.password}</Text>}
                     </FormControl>
                     <FormControl my={2}>
                         <FormLabel htmlFor='passwordConfirmation'>Confirm Password</FormLabel>
                         <Input onChange={handleChange} type='password' placeholder='Confirm Password' name='passwordConfirmation' defaultValue={formData.passwordConfirmation} />
+                        {formData.passwordConfirmation && formData.passwordConfirmation !== formData.password && <Text fontSize={'small'} color={'red'}>Passwords do not match.</Text>}
                     </FormControl>
-                    <Button onClick={handleSubmit} size="lg" w="full" type='submit'>Login</Button>
+                    <Button onClick={handleSubmit} size="lg" w="full" type='submit'>Register</Button>
                 </Box>
             </VStack>
         </Container>

@@ -21,7 +21,6 @@ function App() {
 	const [user, setUser] = useState({ is_valid: false })
 	const [regions, setRegions] = useState([{ id: null, name: '' }])
 	const [categories, setCategories] = useState([{ id: null, name: '' }])
-
 	// try useLayoutEffect if this works
 	useEffect(
 		() => {
@@ -98,7 +97,6 @@ function App() {
 			try {
 				const { data } = await axios.get('api/giveaways/')
 				setGivaeaways(data)
-				console.log(giveaways)
 			} catch (err) {
 				console.log(err)
 			}
@@ -110,11 +108,11 @@ function App() {
 		<BrowserRouter>
 			<NavBar isVerified={user.is_verified} />
 			<Container maxW='container.xl' p={0}>
-				<Flex h='100vh' py={20}>
+				<Flex h='100vh' pb={20}>
 					<Routes>
 						<Route
 							path='/'
-							element={<Home giveaways={giveaways} />}
+							element={<Home />}
 						/>
 						<Route
 							path='/login'
@@ -131,7 +129,7 @@ function App() {
 								/>
 							}
 						/>
-						<Route path='/showcase' element={<Showcase />} />
+						<Route path='/giveaway/:id' element={<Showcase />} />
 					</Routes>
 				</Flex>
 			</Container>

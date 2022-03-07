@@ -27,7 +27,7 @@ class RegisterView(APIView):
             user_to_create.save()
             return Response(user_to_create.data, status=status.HTTP_201_CREATED)
         except AssertionError as e:
-            return Response({"detail": str(e)}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+            return Response({"detail": user_to_create.errors}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         except:
             print("There was an error")
             return Response("Failed to create user", status=status.HTTP_422_UNPROCESSABLE_ENTITY)
@@ -41,7 +41,7 @@ class LoginView(APIView):
             user_to_login = User.objects.get(email=request.data.get('email'))
         except AssertionError as e:
             print(str(e))
-            return Response({"detail": str(e)}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+            return Response({"detail": user_to_login.errors}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         except User.DoesNotExist:
             return PermissionDenied(detail='Unauthorized')
 

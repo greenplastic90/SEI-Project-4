@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { capsFirst } from "./utils";
-import "fontsource-inter/500.css";
+import React from "react"
+import { capsFirst } from "./utils"
+import "fontsource-inter/500.css"
+import { Link } from "react-router-dom"
 
 import {
     Container,
     Heading,
-    Button,
     VStack,
     HStack,
     Text,
     Flex,
-    Tag
-} from "@chakra-ui/react";
+    Tag,
+    Image,
+    Box,
+    border
+} from "@chakra-ui/react"
 
-import ChakraCarousel from "./ChakraCarousel";
+import ChakraCarousel from "./ChakraCarousel"
 
 const ChakraCarouselHub = ({ giveaways }) => {
 
@@ -30,9 +33,10 @@ const ChakraCarouselHub = ({ giveaways }) => {
                 xxl: "87.5rem"
             }}
         >
-            <ChakraCarousel gap={32}>
-                {giveaways && giveaways.map((post, index) => (
-                    <Flex
+            <ChakraCarousel gap={32} id='chackra-card'>
+                {giveaways && giveaways.map(post => (
+                    <Box
+                        display={'flex'}
                         key={post.id}
                         boxShadow="rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px"
                         justifyContent="space-between"
@@ -42,46 +46,65 @@ const ChakraCarouselHub = ({ giveaways }) => {
                         rounded={5}
                         flex={1}
                         p={5}
+                        _hover={{
+                            bg: '#f5f5f5',
+                            border: '1px solid #e6e6e6'
+                        }}
                     >
-                        <VStack mb={6} h={'150px'}>
-                            <Heading
-                                fontSize={{ base: "xl", md: "2xl" }}
-                                textAlign="left"
-                                w="full"
+                        <Link to={`giveaway/${post.id}`}>
+                            <Flex
+                                flexDirection={'column'}
                                 mb={2}
                             >
-                                {capsFirst(post.name)}
-                            </Heading>
-                            <Text textOverflow={'ellipsis'} overflow={'hidden'} whiteSpace={'wrap'} h={'150px'} textAlign={'justify'} w="full">{capsFirst(post.description)}</Text>
-                        </VStack>
-
+                                <VStack mb={2} h={'200px'}>
+                                    <Heading
+                                        fontSize={{ base: "xl", md: "2xl" }}
+                                        textAlign="left"
+                                        w="full"
+                                        mb={2}
+                                    >
+                                        {capsFirst(post.name)}
+                                    </Heading>
+                                    <Text textOverflow={'ellipsis'}
+                                        overflow={'hidden'}
+                                        whiteSpace={'wrap'}
+                                        h={'150px'}
+                                        textAlign={'justify'}
+                                        w="full"
+                                    >
+                                        {capsFirst(post.description)}
+                                    </Text>
+                                </VStack>
+                                <VStack>
+                                    {post.giveaway_images[0] ? <Image src={post.giveaway_images[0]} alt='Giveaway' />
+                                        :
+                                        <Image src={'https://o.remove.bg/downloads/01749bc9-1cb5-407f-8c35-5df666c246d2/giveaway-banner-template-ribbon-label-sign-177644478-removebg-preview.png'} alt='Giveaway' />
+                                    }
+                                </VStack>
+                            </Flex>
+                        </Link>
                         <Flex justifyContent="space-between">
                             <HStack spacing={2}>
-                                <Tag size="sm" variant="outline" colorScheme="green">
-                                    By: {post.owner.username}
-                                </Tag>
+                                <Link to={'/'}>
+                                    <Tag size="sm" variant="outline" colorScheme="green" _hover={{ background: 'lightgreen', transform: 'scale(105%)' }}>
+                                        By: {post.owner.username}
+                                    </Tag>
+                                </Link>
+                                <Link to={'/'}>
+                                    <Tag size="sm" variant="outline" colorScheme="purple" _hover={{ background: '#b89eff', transform: 'scale(105%)'  }}>
+                                        {post.category.name}
+                                    </Tag>
+                                </Link>
                                 <Tag size="sm" variant="outline" colorScheme="cyan">
                                     Ends: {post.end_date.slice(0, 10)}
                                 </Tag>
-                                <Tag size="sm" variant="outline" colorScheme="purple">
-                                    {post.category.name}
-                                </Tag>
                             </HStack>
-                            <Button
-                                onClick={() => alert(`Post ${post.id - 5} clicked`)}
-                                colorScheme="green"
-                                fontWeight="bold"
-                                color="gray.900"
-                                size="sm"
-                            >
-                                More
-                            </Button>
                         </Flex>
-                    </Flex>
+                    </Box>
                 ))}
             </ChakraCarousel>
         </Container>
-    );
+    )
 }
 
 export default ChakraCarouselHub

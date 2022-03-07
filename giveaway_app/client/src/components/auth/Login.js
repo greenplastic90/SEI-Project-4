@@ -21,7 +21,7 @@ const Login = ({ setIsLoggedIn }) => {
         password: '',
     })
 
-    const [formError, setFormError] = useState('')
+    const [formError, setFormError] = useState(false)
 
     const handleChange = (e) => {
         const newObj = { ...formData, [e.target.name]: e.target.value }
@@ -39,9 +39,10 @@ const Login = ({ setIsLoggedIn }) => {
             setLocalToken(data.token)
             navigate('/')
             setIsLoggedIn(true)
-        } catch (error) {
-            setFormError(error.response)
-            console.log('📮', error)
+            setFormError(false)
+        } catch (err) {
+            setFormError(true)
+            console.log('📮', err.response)
         }
     }
 
@@ -79,6 +80,7 @@ const Login = ({ setIsLoggedIn }) => {
                     <Button onClick={handleSubmit} size='lg' w='full' type='submit'>
                         Login
                     </Button>
+                    {formError === true &&  <Text fontSize={'small'} color={'red'}>Inccorect email or password</Text>}
                 </Box>
             </VStack>
         </Container>
