@@ -29,7 +29,7 @@ class GiveawayListView(APIView):
         except IntegrityError as e:
             return Response({"detail": str(e)}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         except AssertionError as e:
-            return Response({"detail": str(e)}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+            return Response({"detail": serialized_data.errors}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         except:
             return Response(
                 {"detail": "Unprocessable Entity"},
@@ -69,6 +69,6 @@ class GiveawayDetailView(APIView):
             serialized_giveaway.save()
             return Response(serialized_giveaway.data, status=status.HTTP_202_ACCEPTED)
         except AssertionError as e:
-            return Response({"detail": str(e)}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+            return Response({"detail": serialized_giveaway.errors}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         except:
             return Response("Unprocessable Entity", status=status.HTTP_422_UNPROCESSABLE_ENTITY)

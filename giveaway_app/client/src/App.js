@@ -116,7 +116,7 @@ function App() {
 		<BrowserRouter>
 			<NavBar isVerified={user.is_verified} />
 			<Container maxW='container.xl' p={0}>
-				<Flex h='100vh' py={20}>
+				<Flex h='100vh' pb={20}>
 					<Routes>
 						<Route
 							path='/'
@@ -138,7 +138,7 @@ function App() {
 								/>
 							}
 						/>
-						<Route path='/showcase' element={<Showcase />} />
+						<Route path='/giveaway/:id' element={<Showcase />} />
 					</Routes>
 				</Flex>
 			</Container>
