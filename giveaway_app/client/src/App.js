@@ -16,6 +16,7 @@ import { getPayload } from './enviroment/auth'
 function App() {
     const [userIDFromToken, setUserIDFromToken] = useState(0)
     // is verified is set to whatever boolean just so passing it in the NavBar as undefined doesn't crash it.
+    const [giveaways, setGivaeaways] = useState([])
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [user, setUser] = useState({ is_valid: false })
     const [regions, setRegions] = useState([
@@ -84,7 +85,8 @@ function App() {
         const getGiveaways = async () => {
             try {
                 const { data } = await axios.get('api/giveaways/')
-                console.log(data)
+                setGivaeaways(data)
+                console.log(giveaways)
             } catch (err) {
                 console.log(err)
             }
@@ -98,7 +100,7 @@ function App() {
             <Container maxW='container.xl' p={0}>
                 <Flex h='100vh' py={20}>
                     <Routes>
-                        <Route path='/' element={<Home />} />
+                        <Route path='/' element={<Home giveaways={giveaways} />} />
                         <Route path='/login' element={<Login setIsLoggedIn={setIsLoggedIn}/>} />
                         <Route path='/register' element={<Register />} />
                         <Route

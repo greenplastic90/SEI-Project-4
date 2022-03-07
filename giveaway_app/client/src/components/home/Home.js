@@ -1,10 +1,12 @@
 import React from 'react'
-import { Text } from '@chakra-ui/react'
 
-const Home = () => {
+// Components
+import ChakraCarouselHub from './carousel/ChakraCarouselHub'
+
+const Home = ({ giveaways }) => {
 	return (
 		<>
-			<Text>HOME PAGE</Text>
+			<ChakraCarouselHub giveaways={giveaways}/>
 		</>
 	)
 }
