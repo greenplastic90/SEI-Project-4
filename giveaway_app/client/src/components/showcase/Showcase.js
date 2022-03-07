@@ -8,13 +8,13 @@ import CommentSection from './CommentSection'
 
 const Showcase = () => {
     const { id } = useParams()
-    console.log(id)
     const [giveaway, setGiveaway] = useState({})
 
     useEffect(() => {
+        console.log(id)
         const getGiveaway = async () => {
             try {
-                const res = await axios.get(`api/giveaways/${id}`)
+                const res = await axios.get(`/api/giveaways/${id}/`)
                 console.log(res)
                 setGiveaway(res.data)
             } catch (err) {
