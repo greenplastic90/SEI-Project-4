@@ -18,7 +18,6 @@ import {
 	InputLeftAddon,
 	Textarea,
 	useDisclosure,
-	HStack,
 } from '@chakra-ui/react'
 import axios from 'axios'
 import { getLocalToken } from '../../../../enviroment/auth'
@@ -75,6 +74,24 @@ const CreateGiveaway = ({
 
 		setGiveawayFormData(newValue)
 	}
+	const handelImageUpload = async (e) => {
+		try {
+			const data = new FormData()
+			data.append('file', e.target.files[0])
+			data.append('upload_preset', 'ctuupxal') // update uploadpreset with .env
+			const res = await axios.post(
+				'https://api.cloudinary.com/v1_1/dhpy1llxc/image/upload',
+				data
+			)
+			console.log(res.data.url)
+			setGiveawayFormData({
+				...giveawayFormData,
+				giveaway_images: [res.data.url],
+			})
+		} catch (err) {
+			console.log(err)
+		}
+	}
 
 	return (
 		<>
@@ -105,6 +122,15 @@ const CreateGiveaway = ({
 									id='name'
 									name='name'
 									placeholder='Please enter giveaway title'
+									isRequired
+								/>
+							</Box>
+							<Box>
+								<FormLabel htmlFor='images'>Images</FormLabel>
+								<Input
+									onChange={handelImageUpload}
+									type='file'
+									id='images'
 								/>
 							</Box>
 
@@ -121,6 +147,7 @@ const CreateGiveaway = ({
 										id='giveaway_link'
 										name='giveaway_link'
 										placeholder='Please enter domain'
+										isRequired
 									/>
 								</InputGroup>
 							</Box>
@@ -134,6 +161,7 @@ const CreateGiveaway = ({
 									isMulti
 									name='regions'
 									options={regions}
+									isRequired
 								/>
 							</Box>
 
@@ -147,6 +175,7 @@ const CreateGiveaway = ({
 									id='category'
 									name='category'
 									options={categories}
+									isRequired
 								/>
 							</Box>
 
@@ -159,6 +188,7 @@ const CreateGiveaway = ({
 									onChange={handleChange}
 									id='description'
 									name='description'
+									isRequired
 								/>
 							</Box>
 
