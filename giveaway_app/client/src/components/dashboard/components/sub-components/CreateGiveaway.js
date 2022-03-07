@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { FaPlus } from '@react-icons/all-files/fa/FaPlus'
+import Select from 'react-select'
 import {
 	Drawer,
 	DrawerBody,
@@ -15,8 +16,6 @@ import {
 	Input,
 	InputGroup,
 	InputLeftAddon,
-	InputRightAddon,
-	Select,
 	Textarea,
 	useDisclosure,
 } from '@chakra-ui/react'
@@ -45,6 +44,7 @@ const CreateGiveaway = ({ regions, categories }) => {
 
 					<DrawerBody>
 						<Stack spacing='24px'>
+							{/* TITLE */}
 							<Box>
 								<FormLabel htmlFor='name'>Title</FormLabel>
 								<Input
@@ -54,6 +54,7 @@ const CreateGiveaway = ({ regions, categories }) => {
 								/>
 							</Box>
 
+							{/* URL */}
 							<Box>
 								<FormLabel htmlFor='url'>
 									Giveaway Url
@@ -67,48 +68,40 @@ const CreateGiveaway = ({ regions, categories }) => {
 									/>
 								</InputGroup>
 							</Box>
+
+							{/* REGION */}
 							<Box>
-								<FormLabel htmlFor='region'>Region</FormLabel>
-								<Select id='region' defaultValue='segun'>
-									{regions && (
-										<>
-											{regions.map((region) => (
-												<option
-													key={region.id}
-													value={region.id}
-												>
-													{region.name}
-												</option>
-											))}
-										</>
-									)}
-								</Select>
+								<FormLabel htmlFor='region'>Regions</FormLabel>
+								<Select
+									id='regions'
+									isMulti
+									name='regions'
+									options={regions}
+								/>
 							</Box>
+
+							{/* Category */}
 							<Box>
 								<FormLabel htmlFor='category'>
 									Category
 								</FormLabel>
-								<Select id='category' defaultValue='segun'>
-									{categories && (
-										<>
-											{categories.map((category) => (
-												<option
-													key={category.id}
-													value={category.id}
-												>
-													{category.name}
-												</option>
-											))}
-										</>
-									)}
-								</Select>
+								<Select
+									id='category'
+									name='category'
+									options={categories}
+								/>
 							</Box>
 
+							{/* DESCRIPTION */}
 							<Box>
 								<FormLabel htmlFor='description'>
 									Description
 								</FormLabel>
-								<Textarea id='description' />
+								<Textarea
+									id='description'
+									name=''
+									description
+								/>
 							</Box>
 						</Stack>
 					</DrawerBody>

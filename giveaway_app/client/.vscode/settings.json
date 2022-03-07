@@ -1,0 +1,12 @@
+{
+	"workbench.colorCustomizations": {
+		"statusBar.background": "#e3ea09",
+		"titleBar.activeBackground": "#e3ea09",
+		"titleBar.inactiveBackground": "#e3ea09",
+		"statusBar.foreground": "#000",
+		"titleBar.inactiveForeground": "#000",
+		"titleBar.activeForeground": "#000"
+	},
+	"window.title": "CLIENT",
+	"compile-hero.disable-compile-files-on-did-save-code": true
+}

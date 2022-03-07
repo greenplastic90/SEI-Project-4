@@ -1,0 +1,12 @@
+{
+	"workbench.colorCustomizations": {
+		"statusBar.background": "#ea2e09",
+		"titleBar.activeBackground": "#ea2e09",
+		"titleBar.inactiveBackground": "#ea2e09",
+		"statusBar.foreground": "#f5f3f3",
+		"titleBar.inactiveForeground": "#f5f3f3",
+		"titleBar.activeForeground": "#f5f3f3"
+	},
+	"window.title": "GIVEAWAY APP",
+	"compile-hero.disable-compile-files-on-did-save-code": true
+}
