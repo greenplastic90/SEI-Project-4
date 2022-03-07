@@ -45,24 +45,24 @@ const Register = () => {
     return (
         <Container maxW="container.sm" p={0}>
             <VStack w="full" h="full" p={10} alignItems="stretch" spacing={10}>
-                <Box>
+                <Box onKeyPress={e => {e.key === 'Enter' && handleSubmit()}}>
                     <Heading size="2xl">Register</Heading>
                     <Text my={4}>Have an account? <Button onClick={handleNavigate} variant="link" colorScheme="black">click here to login</Button>.</Text>
                     <FormControl my={2}>
                         <FormLabel htmlFor='username'>Username</FormLabel>
-                        <Input onChange={handleChange} type='text' placeholder='Username' name='username' defaultValue={formData.username} onKeyPress={e => {e.key === 'Enter' && handleSubmit()}}/>
+                        <Input onChange={handleChange} type='text' placeholder='Username' name='username' defaultValue={formData.username} />
                     </FormControl>
                     <FormControl my={2}>
                         <FormLabel htmlFor='email'>Email Address</FormLabel>
-                        <Input onChange={handleChange} type='email' placeholder='example@mail.com' name='email' defaultValue={formData.email} onKeyPress={e => {e.key === 'Enter' && handleSubmit()}}/>
+                        <Input onChange={handleChange} type='email' placeholder='example@mail.com' name='email' defaultValue={formData.email} />
                     </FormControl>
                     <FormControl my={2}>
                         <FormLabel htmlFor='password'>Password</FormLabel>
-                        <Input onChange={handleChange} type='password' placeholder='Password' name='password' defaultValue={formData.password} onKeyPress={e => {e.key === 'Enter' && handleSubmit()}}/>
+                        <Input onChange={handleChange} type='password' placeholder='Password' name='password' defaultValue={formData.password} />
                     </FormControl>
                     <FormControl my={2}>
                         <FormLabel htmlFor='passwordConfirmation'>Confirm Password</FormLabel>
-                        <Input onChange={handleChange} type='password' placeholder='Confirm Password' name='passwordConfirmation' defaultValue={formData.passwordConfirmation} onKeyPress={e => {e.key === 'Enter' && handleSubmit()}}/>
+                        <Input onChange={handleChange} type='password' placeholder='Confirm Password' name='passwordConfirmation' defaultValue={formData.passwordConfirmation} />
                     </FormControl>
                     <Button onClick={handleSubmit} size="lg" w="full" type='submit'>Login</Button>
                 </Box>

@@ -53,7 +53,7 @@ function App() {
 
     // Get Categories
     useEffect(() => {
-        const getRegions = async () => {
+        const getCatergories = async () => {
             try {
                 const { data } = await axios.get('api/categories/')
                 setCategories(data)
@@ -62,7 +62,7 @@ function App() {
                 console.log(error)
             }
         }
-        getRegions()
+        getCatergories()
     }, [])
 
     // Get Regions

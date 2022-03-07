@@ -53,7 +53,7 @@ const Login = ({ setIsLoggedIn }) => {
     return (
         <Container maxW="container.sm" p={0}  >
             <VStack w="full" h="full" p={10} alignItems="stretch" spacing={10}>
-                <Box>
+                <Box onKeyPress={e => {e.key === 'Enter' && handleSubmit()}}>
                     <Heading size='2xl'>Login</Heading>
                     <Text my={4}>If you don't have an account, <Button onClick={handleNavigate} variant="link" colorScheme="black">click here to register</Button>.</Text>
                     <FormControl my={2}>
@@ -64,7 +64,6 @@ const Login = ({ setIsLoggedIn }) => {
                             name='email'
                             defaultValue={formData.email}
                             placeholder='example@mail.com'
-                            onKeyPress={e => {e.key === 'Enter' && handleSubmit()}}
                         />
                     </FormControl>
                     <FormControl my={2}>
@@ -75,7 +74,6 @@ const Login = ({ setIsLoggedIn }) => {
                             name='password'
                             placeholder='Password'
                             defaultValue={formData.password}
-                            onKeyPress={e => {e.key === 'Enter' && handleSubmit()}}
                         />
                     </FormControl>
                     <Button onClick={handleSubmit} size='lg' w='full' type='submit'>
