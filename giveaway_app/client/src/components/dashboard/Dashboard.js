@@ -8,18 +8,11 @@ import axios from 'axios'
 import { useNavigate } from 'react-router'
 import { userIsAuthenticated } from '../../enviroment/auth'
 
-const Dashboard = ({ user, regions, categories }) => {
-	const [giveawayFormData, setGiveawayFormData] = useState({})
-
+const Dashboard = ({ user, regions, categories, setCreatedGiveaway }) => {
 	const navigate = useNavigate()
 	useLayoutEffect(() => {
 		!userIsAuthenticated() && navigate('/login')
 	}, [navigate])
-
-	const handelChange = (e) => {
-		const newValue = { ...giveawayFormData, [e.target.id]: e.target.value }
-		setGiveawayFormData(newValue)
-	}
 
 	return (
 		<VStack w='100%'>
@@ -31,6 +24,7 @@ const Dashboard = ({ user, regions, categories }) => {
 							user={user}
 							regions={regions}
 							categories={categories}
+							setCreatedGiveaway={setCreatedGiveaway}
 						/>
 						<ActiveGiveaways />
 					</HStack>
