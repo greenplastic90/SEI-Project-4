@@ -19,6 +19,7 @@ import {
 	Textarea,
 	useDisclosure,
 	useToast,
+    Text
 } from '@chakra-ui/react'
 import axios from 'axios'
 import { getLocalToken } from '../../../../enviroment/auth'
@@ -32,7 +33,7 @@ const CreateGiveaway = ({
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const firstField = React.useRef()
 	const [giveawayFormData, setGiveawayFormData] = useState({})
-
+    const [count, setCount] = useState(0)
 	const toast = useToast()
 
 	useEffect(() => {
@@ -109,7 +110,7 @@ const CreateGiveaway = ({
 			...giveawayFormData,
 			[e.target.name]: e.target.value,
 		}
-
+        setCount(e.target.value.length)
 		setGiveawayFormData(newValue)
 	}
 	const handelImageUpload = async (e) => {
@@ -231,6 +232,7 @@ const CreateGiveaway = ({
 									name='description'
 									isRequired
 								/>
+                                <Text fontSize={'sm'}>{`${count}/2000`}</Text>
 							</Box>
 
 							{/* Expiry Date */}

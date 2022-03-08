@@ -1,5 +1,5 @@
 import React from "react"
-import { VStack, HStack, Box, FormControl, Button, Textarea, Text, Divider } from '@chakra-ui/react'
+import { VStack, HStack, Box, FormControl, Button, Textarea, Text, Divider, Input } from '@chakra-ui/react'
 import { AiOutlineSend } from "@react-icons/all-files/ai/AiOutlineSend"
 
 const CommentForm = ({ handleSubmit, handleChange, formData, formErrors, count }) => {
@@ -8,6 +8,14 @@ const CommentForm = ({ handleSubmit, handleChange, formData, formErrors, count }
         <HStack w="full" h="full" p={0} justifyContent={'space-evenly'} onKeyPress={e => { e.key === 'Enter' && handleSubmit() }} id="box">
             <VStack w={'100%'}>
                 <FormControl my={2} w={'100%'}>
+                    <Input
+                        onChange={handleChange}
+                        name='text'
+                        type={'text'}
+                        defaultValue={formData.text}
+                        placeholder='Type comment here'
+                        display={'none'}
+                    />
                     <Textarea
                         onChange={handleChange}
                         name='text'
@@ -15,9 +23,9 @@ const CommentForm = ({ handleSubmit, handleChange, formData, formErrors, count }
                         placeholder='Type comment here'
                     />
                     <HStack>
-                    <Text fontSize={'small'}>{`${count}/200`}</Text>
-                    {/* {count > 200 && <Text ontSize={'small'}>Comment too long</Text>} */}
-                    {formErrors.text && <Text fontSize={'small'} color={'red'}>{formErrors.text}</Text>}
+                        <Text fontSize={'small'}>{`${count}/200`}</Text>
+                        {/* {count > 200 && <Text ontSize={'small'}>Comment too long</Text>} */}
+                        {formErrors.text && <Text fontSize={'small'} color={'red'}>{formErrors.text}</Text>}
                     </HStack>
                 </FormControl>
             </VStack>

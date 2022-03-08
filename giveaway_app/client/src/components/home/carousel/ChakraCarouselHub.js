@@ -47,7 +47,7 @@ const ChakraCarouselHub = ({ giveaways }) => {
 							flex={1}
 							p={5}
 							_hover={{
-								bg: '#f5f5f5',
+								bg: 'lightgray',
 								border: '1px solid #e6e6e6',
 							}}
 						>
@@ -79,6 +79,7 @@ const ChakraCarouselHub = ({ giveaways }) => {
 												src={post.giveaway_images[0]}
 												alt='Giveaway'
 												fallback='https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg'
+                                                maxH={'30%'}
 											/>
 										) : (
 											<Image
