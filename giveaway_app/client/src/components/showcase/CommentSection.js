@@ -16,7 +16,7 @@ const CommentSection = ({ giveaway, setNewComment }) => {
             {!commentForm && <Button onClick={handlenNewCommentButton}>+</Button>}
             {commentForm && <NewComment setNewComment={setNewComment} setCommentForm={setCommentForm}/>}
             {giveaway.comments ? giveaway.comments.map(comment => (
-                <CommentCard key={comment.id} comment={comment} />
+                <CommentCard key={comment.id} comment={comment} setNewComment={setNewComment}/>
             ))
                 :
                 null}

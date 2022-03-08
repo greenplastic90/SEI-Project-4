@@ -1,15 +1,15 @@
 import React from "react"
-import { Button } from '@chakra-ui/react'
-import { FaEdit } from "@react-icons/all-files/fa/FaEdit"
-import { FiDelete } from "@react-icons/all-files/fi/FiDelete"
 
-const CommentButtons = () => {
+// Components
+import DeletePopover from './DeletePopover'
+import EditCommentPopever from "./EditCommentPopover"
 
+const CommentButtons = ({ id, setNewComment, comment }) => {
 
     return (
         <>
-            <Button size={'sm'}><FaEdit /></Button>
-            <Button size={'sm'}><FiDelete /></Button>
+            <EditCommentPopever setNewComment={setNewComment} comment={comment}/>
+            <DeletePopover id={id} setNewComment={setNewComment} />
         </>
     )
 }

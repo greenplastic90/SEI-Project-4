@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Text, HStack, Container } from '@chakra-ui/react'
+import { Text, HStack, Container, VStack } from '@chakra-ui/react'
 import { useParams } from 'react-router'
 import axios from 'axios'
 
@@ -26,14 +26,14 @@ const Showcase = () => {
     }, [id, isNewComment])
 
     return (
-        <Container maxW="container.xl" padding={0}>
-            <HStack>
+        <VStack w={'full'}>
+            <HStack w={'full'}>
                 <Text>Showcase</Text>
             </HStack>
-            <HStack flexDirection={'column'}>
-                <CommentSection giveaway={giveaway} setNewComment={setNewComment}/>
-            </HStack>
-        </Container>
+            <VStack w={'full'} >
+                <CommentSection giveaway={giveaway} setNewComment={setNewComment} />
+            </VStack>
+        </VStack>
     )
 }
 
