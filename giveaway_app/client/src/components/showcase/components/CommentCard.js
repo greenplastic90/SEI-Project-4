@@ -21,7 +21,7 @@ const CommentCard = ({ comment, setNewComment }) => {
                     </VStack>
                     <VStack>
                         <Box w={'full'}>
-                            <Text textAlign={'justify'}>
+                            <Text textOverflow={'clip'} textAlign={'justify'}>
                                 <Tag variant="outline" colorScheme={userIsOwner() === comment.owner.id ? 'teal' : 'yellow'}>{comment.owner.username}:</Tag> {comment.text}
                             </Text>
                             <Tag mt={1} size={'sm'} textAlign={'right'}>Posted: {comment.created_at.slice(0, 10)}</Tag>
