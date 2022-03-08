@@ -5,7 +5,7 @@ import axios from 'axios'
 
 // Componenets
 import CommentSection from './CommentSection'
-import GiveawayShowcase from './components/GiveawayShowcase'
+import GiveawayShowcase from './GiveawayShowcase'
 
 const Showcase = () => {
     const { id } = useParams()
