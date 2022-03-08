@@ -9,7 +9,7 @@ const UserInfo = ({ user, regions, categories, setCreatedGiveaway }) => {
 		<VStack spacing={4}>
 			<ProfilePhoto photo={user.profile_image} />
 			<Heading size='lg'>{user.username}</Heading>
-			<HStack>
+			<HStack spacing={1}>
 				{user.first_name && (
 					<Heading size='sm'>{user.first_name}</Heading>
 				)}

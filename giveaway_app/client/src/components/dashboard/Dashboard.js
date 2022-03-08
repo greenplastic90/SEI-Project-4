@@ -26,7 +26,7 @@ const Dashboard = ({ user, regions, categories, setCreatedGiveaway }) => {
 							categories={categories}
 							setCreatedGiveaway={setCreatedGiveaway}
 						/>
-						<ActiveGiveaways />
+						<ActiveGiveaways giveaways={user.giveaways} />
 					</HStack>
 
 					<ExpiredGiveaways />
