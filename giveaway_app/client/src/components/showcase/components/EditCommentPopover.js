@@ -38,7 +38,7 @@ const EditCommentPopever = ({ comment, setNewComment, setIsEditForm }) => {
                     },
                 }
             )
-            setFormData({...formData, text: ''})
+            setFormData({ ...formData, text: '' })
             setNewComment(true)
             setNewComment(false)
             setIsEditForm(false)
@@ -56,31 +56,31 @@ const EditCommentPopever = ({ comment, setNewComment, setIsEditForm }) => {
 
     return (
         <>
-        <Popover
-        isOpen={isOpen}
-        onOpen={onOpen}
-        onClose={onClose}
-        closeOnBlur={false}
-        closeOnEsc={true}
-        >
-            <PopoverTrigger>
-                <Button size={'sm'}><FaEdit /></Button>
-            </PopoverTrigger>
-            <PopoverContent>
-                <PopoverArrow />
-                <PopoverCloseButton />
-                <PopoverHeader>Edit</PopoverHeader>
-                <FormControl>
-                    <Textarea 
-                    defaultValue={comment.text}
-                    onChange={handleChange}
-                    name={'text'}
-                    />
-                </FormControl>
-                <Button onClick={handleSubmit} colorScheme='green'>Confirm</Button>
-            </PopoverContent>
-        </Popover>
-    </>
+            <Popover
+                isOpen={isOpen}
+                onOpen={onOpen}
+                onClose={onClose}
+                closeOnBlur={false}
+                closeOnEsc={true}
+            >
+                <PopoverTrigger>
+                    <Button size={'sm'}><FaEdit /></Button>
+                </PopoverTrigger>
+                <PopoverContent>
+                    <PopoverArrow />
+                    <PopoverCloseButton />
+                    <PopoverHeader>Edit</PopoverHeader>
+                    <FormControl>
+                        <Textarea
+                            defaultValue={comment.text}
+                            onChange={handleChange}
+                            name={'text'}
+                        />
+                    </FormControl>
+                    <Button onClick={handleSubmit} onMouseUp={onClose} colorScheme='green'>Confirm</Button>
+                </PopoverContent>
+            </Popover>
+        </>
     )
 }
 

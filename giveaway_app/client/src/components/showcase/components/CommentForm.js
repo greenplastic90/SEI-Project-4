@@ -1,37 +1,30 @@
 import React from "react"
-import { VStack, Box, FormControl, Button, Textarea, Text } from '@chakra-ui/react'
+import { VStack, HStack, Box, FormControl, Button, Textarea, Text } from '@chakra-ui/react'
+import { AiOutlineSend } from "@react-icons/all-files/ai/AiOutlineSend"
 
-const CommentForm = ({ handleSubmit, handleChange, formData, formErrors, setCommentForm }) => {
-    const handleCancel = () => {
-        setCommentForm(false)
-    }
+const CommentForm = ({ handleSubmit, handleChange, formData, formErrors, count }) => {
+
     return (
-        <Box
-            w={'100%'}
-            onKeyPress={e => { e.key === 'Enter' && handleSubmit() }}
-        >
-            <VStack w="full" h="full" p={0} alignItems="stretch" flexDirection={'row'}>
-                <VStack>
-                    <FormControl my={2}>
-                        <Textarea
-                            onChange={handleChange}
-                            name='text'
-                            defaultValue={formData.text}
-                            placeholder='Type comment here'
-                        />
-                        {formErrors === true && <Text fontSize={'small'} color={'red'}>{formErrors.text}</Text>}
-                    </FormControl>
-                </VStack>
-                <VStack id="box" margin={0} justifyContent={'center'}>
-                    <Button h={'100%'} size='sm' w='full' type='submit' onClick={handleSubmit}>
-                        Sub
-                    </Button>
-                    <Button h={'100%'} size='sm' w='full' onClick={handleCancel}>
-                        Can
-                    </Button>
-                </VStack>
+        <HStack w="full" h="full" p={0} justifyContent={'space-evenly'} onKeyPress={e => { e.key === 'Enter' && handleSubmit() }} id="box">
+            <VStack w={'100%'}>
+                <FormControl my={2} w={'100%'}>
+                    <Textarea
+                        onChange={handleChange}
+                        name='text'
+                        defaultValue={formData.text}
+                        placeholder='Type comment here'
+                    />
+                    {count ?  <Text fontSize={'small'}>{`${count}/200`}</Text> : null}
+                    {/* {count > 200 && <Text ontSize={'small'}>Comment too long</Text>} */}
+                    {formErrors.text && <Text fontSize={'small'} color={'red'}>{formErrors.text}</Text>}
+                </FormControl>
             </VStack>
-        </Box>
+            <VStack id="box" margin={0} h={'100%'}>
+                <Button h={'100%'} size='sm' w='full' type='submit' onClick={handleSubmit}>
+                    <AiOutlineSend />
+                </Button>
+            </VStack>
+        </HStack>
     )
 }
 

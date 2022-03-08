@@ -1,6 +1,6 @@
-import React, { useState } from "react"
-import { Text, VStack, Box, Flex, HStack, Image, Divider, Tag, AspectRatio } from '@chakra-ui/react'
-import { userIsAuthenticated, getPayload } from '../../../enviroment/auth'
+import React from "react"
+import { Text, VStack, Box, HStack, Image, Divider, Tag, AspectRatio } from '@chakra-ui/react'
+import { getPayload } from '../../../enviroment/auth'
 
 // Components
 import CommentButtons from './CommentButtons'

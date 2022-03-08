@@ -1,25 +1,21 @@
-import { Button } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import { Heading, Tag } from '@chakra-ui/react'
+import React from 'react'
 
 // Componenets
 import CommentCard from './components/CommentCard'
 import NewComment from './components/NewComment'
 
 const CommentSection = ({ giveaway, setNewComment }) => {
-    const [commentForm, setCommentForm] = useState(false)
-    const handlenNewCommentButton  = () => {
-        setCommentForm(true)
-    }
     return (
         <>
-            <h1>Comment section</h1>
-            {!commentForm && <Button onClick={handlenNewCommentButton}>+</Button>}
-            {commentForm && <NewComment setNewComment={setNewComment} setCommentForm={setCommentForm}/>}
-            {giveaway.comments ? giveaway.comments.map(comment => (
-                <CommentCard key={comment.id} comment={comment} setNewComment={setNewComment}/>
+            <Heading>Comment section</Heading>
+            <NewComment setNewComment={setNewComment} />
+            {giveaway.comments && giveaway.comments.length > 0 ? giveaway.comments.map(comment => (
+                <CommentCard key={comment.id} comment={comment} setNewComment={setNewComment} />
             ))
                 :
-                null}
+                <Tag colorScheme={'messenger'}>Be the first to comment!</Tag>
+            }
         </>
     )
 }
