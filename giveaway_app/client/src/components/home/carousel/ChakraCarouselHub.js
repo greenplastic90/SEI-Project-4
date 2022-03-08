@@ -51,7 +51,6 @@ const ChakraCarouselHub = ({ giveaways }) => {
 								border: '1px solid #e6e6e6',
 							}}
 						>
-							{console.log('IMAGES -->', post.giveaway_images)}
 							<Link to={`giveaway/${post.id}`}>
 								<Flex flexDirection={'column'} mb={2}>
 									<VStack mb={2} h={'200px'}>

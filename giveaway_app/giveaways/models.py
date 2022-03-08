@@ -5,11 +5,11 @@ from django.contrib.postgres.fields import ArrayField
 
 
 class Giveaway(models.Model):
-    name = models.CharField(max_length=100, default=None)
-    description = models.CharField(max_length=2000, default=None)
-    giveaway_link = models.CharField(max_length=500, default=None)
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=2000)
+    giveaway_link = models.CharField(max_length=500)
     created_at = models.DateTimeField(auto_now_add=True)
-    end_date = models.DateTimeField(default=None)
+    end_date = models.DateTimeField()
     winner = models.CharField(max_length=100, blank=True)
     owner = models.ForeignKey(
         "jwt_auth.User",
