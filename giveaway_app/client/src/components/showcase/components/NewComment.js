@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import { getLocalToken } from '../../../enviroment/auth'
 import CommentForm from './CommentForm'
 
-const NewComment = ({ setNewComment, setCommentForm }) => {
+const NewComment = ({ setNewComment }) => {
 
     const { id } = useParams()
     const [formData, setFormData] = useState({
@@ -18,8 +18,9 @@ const NewComment = ({ setNewComment, setCommentForm }) => {
         giveaway: ''
     })
     useEffect(() => {
-        setFormData({...formData, giveaway: id})
+        setFormData({ ...formData, giveaway: id })
     }, [id])
+    const [count, setCount] = useState(0)
 
 
     const handleSubmit = async (e) => {
@@ -34,32 +35,30 @@ const NewComment = ({ setNewComment, setCommentForm }) => {
                     },
                 }
             )
-            setFormData({...formData, text: ''})
+            setFormData({ ...formData, text: '' })
             setNewComment(true)
             setNewComment(false)
-            setCommentForm(false)
             console.log("Posted")
         } catch (err) {
-            console.log(err)
-            setFormErrors(err.response.data.errors)
+            console.log(err.response.data.detail.text[0])
+            setFormErrors({...formErrors, text: err.response.data.detail.text[0]})
         }
     }
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
         setFormErrors({ ...formErrors, [e.target.name]: '' })
+        setCount(e.target.value.length)
     }
 
     return (
-            <div className='mt-4'>
-                <CommentForm
-                    handleSubmit={handleSubmit}
-                    handleChange={handleChange}
-                    formData={formData}
-                    formErrors={formErrors}
-                    setCommentForm={setCommentForm}
-                />
-            </div>
+        <CommentForm
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            formData={formData}
+            formErrors={formErrors}
+            count={count}
+        />
     )
 }
 
