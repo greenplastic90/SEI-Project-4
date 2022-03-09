@@ -32,7 +32,7 @@ const GiveawayCard = ({ giveaway }) => {
 						)}
 						<SocialIconLink url={giveaway.giveaway_link} />
 					</HStack>
-					<UpdateGiveaway />
+					{/* <UpdateGiveaway /> */}
 				</HStack>
 			</VStack>
 		</>
