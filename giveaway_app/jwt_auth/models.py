@@ -1,6 +1,5 @@
 
 from django.db import models
-from giveaways.models import Giveaway
 from django.contrib.auth.models import AbstractUser
 from django.contrib.postgres.fields import ArrayField
 
@@ -20,7 +19,7 @@ class User(AbstractUser):
         max_length=500), null=True, blank=True)
 
     watchlist = models.ManyToManyField(
-        Giveaway,
+        "giveaways.Giveaway",
         related_name="Watchers",
         blank=True
     )

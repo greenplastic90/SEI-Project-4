@@ -4,6 +4,8 @@ import { ExternalLinkIcon } from '@chakra-ui/icons'
 import ProfilePhoto from "../dashboard/components/sub-components/ProfilePhoto"
 import ProfilePopover from "./showcaseComponents/ProfilePopover"
 
+import WatchListAvatars from "./showcaseComponents/WatchlistAvartas"
+
 const GiveawayShowcase = ({ giveaway }) => {
 
     useEffect(() => {
@@ -48,12 +50,9 @@ const GiveawayShowcase = ({ giveaway }) => {
                     </VStack>
                     <Stack align-items={'flex-start'} direction={{ md: 'column', sm: 'row' }}>
                         <VStack>
-                            <ProfilePhoto photo={giveaway.owner.profile_photo} />
+                            <ProfilePhoto photo={giveaway.owner.profile_image} />
                             <ProfilePopover giveaway={giveaway} />
                         </VStack>
-                        <Box border={'1px lightgray dashed'} w={'100%'}>
-                            <Text>Watching list</Text>
-                        </Box>
                         <VStack w={'100%'}>
                             <Tag w={'100%'} alignSelf={'flex-start'}>Category: {giveaway.category.name}</Tag>
                             <Tag w={'100%'} alignSelf={'flex-start'}>Region: {giveaway.regions[0].name}</Tag>
@@ -62,7 +61,10 @@ const GiveawayShowcase = ({ giveaway }) => {
                         </VStack>
                     </Stack>
                 </Stack>
-                <VStack w={'full'} alignItems={'flex-start'}>
+                <HStack w={'100%'}>
+                    <WatchListAvatars userlist={giveaway.watcher_list} sizeBig={true}/>
+                </HStack>
+                <VStack w={'full'} alignItems={'flex-start'} alignContent={'flex-start'}>
                     <Heading alignSelf={'flex-start'} size={'md'}>Description</Heading>
                     <Text whiteSpace={'pre-line'} textAlign={'justify'} >{giveaway.description}</Text>
                     <HStack w={'100%'} justifyContent={'space-between'}>

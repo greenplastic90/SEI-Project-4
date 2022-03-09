@@ -9,5 +9,5 @@ class PopulatedGiveawaySerializer(GiveawaySerializer):
     regions = RegionSerializer(many=True)
     category = CategorySerializer()
     owner = UserSerializer()
-    # watchlist = UserSerializer(many=True)
+    watcher_list = UserSerializer(many=True)
     comments = PopulatedCommentSerializer(many=True)
