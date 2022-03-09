@@ -5,6 +5,7 @@ import {
 	useToast,
 	useDisclosure,
 	Button,
+	Stack,
 } from '@chakra-ui/react'
 import axios from 'axios'
 import { FaPlus } from '@react-icons/all-files/fa/FaPlus'
@@ -73,17 +74,27 @@ const UserInfo = ({ user, regions, categories, setCreatedGiveaway }) => {
 	}
 	return (
 		<VStack spacing={4} w={'full'}>
-			<ProfilePhoto photo={user.profile_image} />
-			<Heading size='lg'>{user.username}</Heading>
-			<HStack spacing={1}>
-				{user.first_name && (
-					<Heading size='sm'>{user.first_name}</Heading>
-				)}
-				{user.last_name && (
-					<Heading size='sm'>{user.last_name}</Heading>
-				)}
-			</HStack>
-			<SocialLinks socialUrls={user.socials} />
+			<Stack
+				w={'full'}
+				direction={['row', 'row', 'column']}
+				justify={'center'}
+				align={['center']}
+			>
+				<ProfilePhoto photo={user.profile_image} />
+				<VStack>
+					<Heading size='lg'>{user.username}</Heading>
+					<HStack spacing={1}>
+						{user.first_name && (
+							<Heading size='sm'>{user.first_name}</Heading>
+						)}
+						{user.last_name && (
+							<Heading size='sm'>{user.last_name}</Heading>
+						)}
+					</HStack>
+					<SocialLinks socialUrls={user.socials} />
+				</VStack>
+			</Stack>
+
 			<Button leftIcon={<FaPlus />} onClick={onOpen}>
 				Create Giveaway
 			</Button>

@@ -15,7 +15,7 @@ const ActiveGiveaways = ({
 	categories,
 	setCreatedGiveaway,
 }) => {
-	const colSpan = useBreakpointValue([6, 3, 2])
+	const colSpan = useBreakpointValue([3, 3, 2])
 	return (
 		<VStack w={'full'}>
 			<SimpleGrid columns={6} w={'full'} rowGap={5} columnGap={5}>
