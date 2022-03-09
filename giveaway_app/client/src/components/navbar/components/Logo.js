@@ -5,7 +5,7 @@ const Logo = () => {
 	return (
 		<Box>
 			<Text fontSize='lg' fontWeight='bold'>
-				Giveaway Bay
+				Giveaway Bae
 			</Text>
 		</Box>
 	)

@@ -41,6 +41,7 @@ const FollowingFollowerRequest = ({ relatedUserId, user }) => {
         const payload = getPayload()
         const id = payload.sub
         try {
+            // Update User
             await axios.put(
                 `/api/profile/${id}/`,
                 userForm, // Change to object with altered array as value
@@ -50,6 +51,7 @@ const FollowingFollowerRequest = ({ relatedUserId, user }) => {
                     },
                 }
             )
+            // Update realted User
             await axios.put(
                 `/api/profile/related/${relatedUserId}/`,
                 relatedUserForm, // Change to object with altered array as value

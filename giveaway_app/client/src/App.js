@@ -120,7 +120,7 @@ function App() {
 					<Routes>
 						<Route
 							path='/'
-							element={<Home giveaways={giveaways} />}
+							element={<Home createdGiveaway={createdGiveaway}/>}
 						/>
 						<Route
 							path='/login'
