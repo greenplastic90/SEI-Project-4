@@ -17,80 +17,29 @@ import {
 	InputGroup,
 	InputLeftAddon,
 	Textarea,
-	useDisclosure,
-	useToast,
-    Text
+	Text,
 } from '@chakra-ui/react'
 import axios from 'axios'
-import { getLocalToken } from '../../../../enviroment/auth'
 
-const CreateGiveaway = ({
+const CreateOrUpdateGiveaway = ({
 	regions,
 	categories,
-	setCreatedGiveaway,
 	userID,
+	setGiveawayFormData,
+	giveawayFormData,
+	handleSubmit,
+	onOpen,
+	isOpen,
+	onClose,
 }) => {
-	const { isOpen, onOpen, onClose } = useDisclosure()
 	const firstField = React.useRef()
-	const [giveawayFormData, setGiveawayFormData] = useState({})
-    const [count, setCount] = useState(0)
-	const toast = useToast()
+
+	const [count, setCount] = useState(0)
 
 	useEffect(() => {
 		setGiveawayFormData({ ...giveawayFormData, owner: userID })
 	}, [userID])
 
-	const handleSubmit = async () => {
-		try {
-			const { data } = await axios.post(
-				'/api/giveaways/',
-				giveawayFormData,
-				{
-					headers: {
-						Authorization: `Bearer ${getLocalToken()}`,
-					},
-				}
-			)
-			// Closes drawer when submit is successful
-			toast({
-				title: 'Giveaway Created',
-				description: `${data.name}`,
-				status: 'success',
-				duration: 3000,
-			})
-			onClose()
-			setCreatedGiveaway(data)
-			setGiveawayFormData({})
-		} catch (error) {
-			// error.response.data.detail.foreach((detail) => console.log(detail))
-
-			console.log('Errors ->', error.response.data.detail)
-			console.log(
-				'Error keys ->',
-				Object.keys(error.response.data.detail)
-			)
-			const errKeys = Object.keys(error.response.data.detail)
-
-			errKeys.forEach((key) =>
-				error.response.data.detail[key].forEach((err) => {
-					if (key === 'giveaway_link') key = 'Url'
-					if (key === 'name') key = 'Title'
-					if (key === 'description') key = 'Description'
-					if (key === 'end_date') key = 'Expirey Date'
-					if (key === 'giveaway_images') key = 'Image'
-					if (key === 'regions') key = 'Regions'
-					if (key === 'category') key = 'Category'
-					toast({
-						title: 'Ooops',
-						description: `${key} - ${err}`,
-						status: 'error',
-						duration: null,
-						isClosable: true,
-					})
-				})
-			)
-		}
-	}
 	const handelCategorySelection = (e) => {
 		setGiveawayFormData({ ...giveawayFormData, category: e.id })
 	}
@@ -102,7 +51,6 @@ const CreateGiveaway = ({
 			regions: arrIDs,
 		}
 		setGiveawayFormData(newValue)
-		console.log(arrIDs)
 	}
 
 	const handleChange = (e) => {
@@ -110,7 +58,7 @@ const CreateGiveaway = ({
 			...giveawayFormData,
 			[e.target.name]: e.target.value,
 		}
-        setCount(e.target.value.length)
+		setCount(e.target.value.length)
 		setGiveawayFormData(newValue)
 	}
 	const handelImageUpload = async (e) => {
@@ -232,7 +180,7 @@ const CreateGiveaway = ({
 									name='description'
 									isRequired
 								/>
-                                <Text fontSize={'sm'}>{`${count}/2000`}</Text>
+								<Text fontSize={'sm'}>{`${count}/2000`}</Text>
 							</Box>
 
 							{/* Expiry Date */}
@@ -265,4 +213,4 @@ const CreateGiveaway = ({
 	)
 }
 
-export default CreateGiveaway
+export default CreateOrUpdateGiveaway

@@ -43,16 +43,17 @@ const AvatarArray = ({ userList, sizeBig = false }) => {
 export default AvatarArray
 
 const Avatar = ({ photo }) => {
-    return (
-        <AspectRatio ratio={1} w={10}>
-            <Image
-                src={photo}
-                objectFit='cover'
-                borderRadius='15px'
-                border={'1px'}
-                borderColor={'gray500'}
-                fallbackSrc='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnm7iKDRSxqEpHVRB5FzOEVIg_ouNU10pQ8YGgVQhY7MqLSqmEQBXo_t5dfXi5ImExW6Y&usqp=CAU'
-            />
-        </AspectRatio>
-    )
+	return (
+		<AspectRatio ratio={1} w={10}>
+			<Image
+				src={photo}
+				objectFit='cover'
+				borderRadius='15px'
+				border={'1px'}
+				borderColor={'gray500'}
+				p={'1px'}
+				fallbackSrc='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnm7iKDRSxqEpHVRB5FzOEVIg_ouNU10pQ8YGgVQhY7MqLSqmEQBXo_t5dfXi5ImExW6Y&usqp=CAU'
+			/>
+		</AspectRatio>
+	)
 }
