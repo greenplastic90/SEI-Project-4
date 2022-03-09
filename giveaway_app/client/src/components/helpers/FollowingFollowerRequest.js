@@ -1,75 +1,35 @@
 import axios from "axios"
-import React, { useState, useEffect } from "react"
+import { getLocalToken, getPayload } from '../../enviroment/auth'
 
-import { getLocalToken, getPayload } from '../../../enviroment/auth'
+export const FollowingFollowerRequest = async (relatedUserId, user) => {
+    const followingArray = user.following
 
-const FollowingFollowerRequest = ({ relatedUserId, user }) => {
-    const [userForm, setUserForm] = useState(null)
-    const [relatedUserForm, setRelatedUserForm] = useState(null)
+    if (user.following.includes(relatedUserId)) {
+        const index = followingArray.indexOf(relatedUserId)
+        followingArray.splice(index, 1)
+        console.log('remove')
+    } else {
+        console.log(relatedUserId)
+        followingArray.push(relatedUserId)
+        console.log('add')
 
-    useEffect(() => {
-        if (userForm && relatedUserForm){
-            if (userForm.includes(relatedUserId)) {
-                // If array includes realted id >>> remove there ID
-                // And Vice versa
-            } else {
-                // If its not in the array, add there id. 
-                // and vice versa
-            }
-        }
-
-    }, [userForm, relatedUserForm])
-
-    useEffect(() => {
-        setUserForm(user.following)
-    }, [user])
-
-    // Get verifired User 
-    useEffect(() => {
-        const getUser = async () => {
-            try {
-                const { data } = await axios.get(`/api/profile/${relatedUserId}/`)
-                setRelatedUserForm(data.followers)
-            } catch (err) {
-                console.log(err)
-            }
-        }
-        getUser()
-    }, [relatedUserId])
-
-    const updatedUserLists = async () => {
-        const payload = getPayload()
-        const id = payload.sub
-        try {
-            // Update User
-            await axios.put(
-                `/api/profile/${id}/`,
-                userForm, // Change to object with altered array as value
-                {
-                    headers: {
-                        Authorization: `Bearer ${getLocalToken()}`,
-                    },
-                }
-            )
-            // Update realted User
-            await axios.put(
-                `/api/profile/related/${relatedUserId}/`,
-                relatedUserForm, // Change to object with altered array as value
-                {
-                    headers: {
-                        Authorization: `Bearer ${getLocalToken()}`,
-                    },
-                }
-            )
-        } catch (err) {
-            console.log(err)
-        }
     }
-
-    return (
-        <>
-        </>
-    )
+    console.log('Next', followingArray)
+    let res = null
+    try {
+        const { data } = await axios.put(
+            `/api/profile/${user.id}/`,
+            { following: followingArray },
+            {
+                headers: {
+                    Authorization: `Bearer ${getLocalToken()}`,
+                },
+            }
+        )
+        console.log(data)
+        res = data
+    } catch (err) {
+        console.log(err)
+    }
+    return res
 }
-
-export default FollowingFollowerRequest

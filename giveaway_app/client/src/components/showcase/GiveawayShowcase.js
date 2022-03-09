@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { VStack, HStack, Text, Heading, Image, Flex, Box, Tag, Link } from '@chakra-ui/react'
+import { VStack, HStack, Text, Heading, Image, Stack, Box, Tag, Link } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import ProfilePhoto from "../dashboard/components/sub-components/ProfilePhoto"
 import ProfilePopover from "./showcaseComponents/ProfilePopover"
@@ -32,7 +32,7 @@ const GiveawayShowcase = ({ giveaway }) => {
         <>
             <VStack w={'full'}>
                 <Heading alignSelf={'flex-start'}> {giveaway.name}</Heading>
-                <HStack w={'full'} justifyContent={'space-evenly'} align-items={'flex-start'}>
+                <Stack w={'full'} justifyContent={'space-evenly'} align-items={'flex-start'} direction={{ base: "column", md: 'row' }} >
                     <VStack align-items={'flex-start'}>
                         {giveaway.giveaway_images ?
                             <Image
@@ -46,19 +46,22 @@ const GiveawayShowcase = ({ giveaway }) => {
                             />
                         }
                     </VStack>
-                    <VStack align-items={'flex-start'}>
-                        <ProfilePhoto photo={giveaway.owner.profile_photo} />
-                        <ProfilePopover giveaway={giveaway} />
-                        <Box border={'1px black solid'} w={'100%'}>
+                    <Stack align-items={'flex-start'} direction={{ md: 'column', sm: 'row' }}>
+                        <VStack>
+                            <ProfilePhoto photo={giveaway.owner.profile_photo} />
+                            <ProfilePopover giveaway={giveaway} />
+                        </VStack>
+                        <Box border={'1px lightgray dashed'} w={'100%'}>
                             <Text>Watching list</Text>
                         </Box>
                         <VStack w={'100%'}>
                             <Tag w={'100%'} alignSelf={'flex-start'}>Category: {giveaway.category.name}</Tag>
                             <Tag w={'100%'} alignSelf={'flex-start'}>Region: {giveaway.regions[0].name}</Tag>
                             <Tag w={'100%'} id='countdown'>00:00</Tag>
+                            <Tag w={'100%'} alignSelf={'flex-start'}>Winner: {giveaway.winner}</Tag>
                         </VStack>
-                    </VStack>
-                </HStack>
+                    </Stack>
+                </Stack>
                 <VStack w={'full'} alignItems={'flex-start'}>
                     <Heading alignSelf={'flex-start'} size={'md'}>Description</Heading>
                     <Text whiteSpace={'pre-line'} textAlign={'justify'} >{giveaway.description}</Text>

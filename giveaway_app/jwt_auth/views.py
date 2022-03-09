@@ -119,6 +119,11 @@ class RelatedUserDetailView(APIView):
         except User.DoesNotExist:
             raise NotFound(detail="User not found")
 
+    def get(self, _request, pk):
+        user = self.get_user(pk=pk)
+        serialized_user = UserSerializer(user)
+        return Response(serialized_user.data, status=status.HTTP_200_OK)
+
     def put(self, request, pk):
         user_to_update = self.get_user(pk=pk)
 

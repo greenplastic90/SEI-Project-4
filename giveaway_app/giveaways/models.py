@@ -24,11 +24,7 @@ class Giveaway(models.Model):
     )
     giveaway_images = ArrayField(models.CharField(
         max_length=500), size=3, null=True, blank=True)
-    watcher_list = models.ManyToManyField(
-        "jwt_auth.User",
-        related_name="giveaway",
-        blank=True
-    )
+        
     regions = models.ManyToManyField(
         "regions.Region",
         related_name="giveaways"
