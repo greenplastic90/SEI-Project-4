@@ -1,15 +1,25 @@
-import { HStack, VStack, Spinner } from '@chakra-ui/react'
+import {
+	HStack,
+	VStack,
+	Stack,
+	Spinner,
+	SimpleGrid,
+	GridItem,
+	useBreakpointValue,
+} from '@chakra-ui/react'
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 
 import UserInfo from './components/UserInfo'
 import ActiveGiveaways from './components/ActiveGiveaways'
 import ExpiredGiveaways from './components/ExpiredGiveaways'
-import axios from 'axios'
 import { useNavigate } from 'react-router'
 import { userIsAuthenticated } from '../../enviroment/auth'
 
 const Dashboard = ({ user, regions, categories, setCreatedGiveaway }) => {
 	const navigate = useNavigate()
+	const userInfoColSpan = useBreakpointValue({ base: 4, md: 1 })
+	const ActiveColSpan = useBreakpointValue({ base: 4, md: 3 })
+
 	useLayoutEffect(() => {
 		!userIsAuthenticated() && navigate('/login')
 	}, [navigate])
@@ -19,15 +29,23 @@ const Dashboard = ({ user, regions, categories, setCreatedGiveaway }) => {
 			{/* make this HStack its own components to use in the VUser profile page as well */}
 			{user ? (
 				<>
-					<HStack justify='space-between' w='100%'>
-						<UserInfo
-							user={user}
-							regions={regions}
-							categories={categories}
-							setCreatedGiveaway={setCreatedGiveaway}
-						/>
-						<ActiveGiveaways giveaways={user.giveaways} />
-					</HStack>
+					<SimpleGrid
+						columns={4}
+						rowGap={10}
+						columnGap={{ base: 0, md: 18 }}
+					>
+						<GridItem colSpan={userInfoColSpan}>
+							<UserInfo
+								user={user}
+								regions={regions}
+								categories={categories}
+								setCreatedGiveaway={setCreatedGiveaway}
+							/>
+						</GridItem>
+						<GridItem colSpan={ActiveColSpan}>
+							<ActiveGiveaways giveaways={user.giveaways} />
+						</GridItem>
+					</SimpleGrid>
 
 					<ExpiredGiveaways />
 				</>

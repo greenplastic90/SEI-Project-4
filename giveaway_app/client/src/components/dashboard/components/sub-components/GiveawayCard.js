@@ -1,10 +1,10 @@
-import { HStack, VStack, Heading, Tag } from '@chakra-ui/react'
+import { HStack, VStack, Heading, Tag, Text } from '@chakra-ui/react'
 import React from 'react'
 import GiveawayImage from './GiveawayImage'
 
 const GiveawayCard = ({ giveaway }) => {
 	return (
-		<HStack>
+		<HStack border={'1px'} borderRadius={'10px'} w={'full'} p={'5px'}>
 			{console.log(giveaway)}
 			{giveaway.giveaway_images ? (
 				<GiveawayImage photo={giveaway.giveaway_images[0]} />
@@ -13,7 +13,7 @@ const GiveawayCard = ({ giveaway }) => {
 			)}
 
 			<VStack>
-				<Heading size={'sm'}>{giveaway.name}</Heading>
+				<Text>{giveaway.name}</Text>
 				<Tag>{giveaway.category}</Tag>
 			</VStack>
 		</HStack>
