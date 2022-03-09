@@ -43,7 +43,13 @@ const Dashboard = ({ user, regions, categories, setCreatedGiveaway }) => {
 							/>
 						</GridItem>
 						<GridItem colSpan={ActiveColSpan}>
-							<ActiveGiveaways giveaways={user.giveaways} />
+							<ActiveGiveaways
+								userID={user.id}
+								giveaways={user.giveaways}
+								regions={regions}
+								categories={categories}
+								setCreatedGiveaway={setCreatedGiveaway}
+							/>
 						</GridItem>
 					</SimpleGrid>
 

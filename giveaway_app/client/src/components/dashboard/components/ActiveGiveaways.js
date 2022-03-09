@@ -8,7 +8,13 @@ import {
 import React from 'react'
 import GiveawayCard from './sub-components/GiveawayCard'
 
-const ActiveGiveaways = ({ giveaways }) => {
+const ActiveGiveaways = ({
+	giveaways,
+	userID,
+	regions,
+	categories,
+	setCreatedGiveaway,
+}) => {
 	const colSpan = useBreakpointValue([6, 3, 2])
 	return (
 		<VStack w={'full'}>
@@ -16,7 +22,13 @@ const ActiveGiveaways = ({ giveaways }) => {
 				{giveaways ? (
 					giveaways.map((giveaway) => (
 						<GridItem key={giveaway.id} colSpan={colSpan}>
-							<GiveawayCard giveaway={giveaway} />
+							<GiveawayCard
+								giveaway={giveaway}
+								userID={userID}
+								regions={regions}
+								categories={categories}
+								setCreatedGiveaway={setCreatedGiveaway}
+							/>
 						</GridItem>
 					))
 				) : (

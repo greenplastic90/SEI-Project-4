@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FaPlus } from '@react-icons/all-files/fa/FaPlus'
+
 import Select from 'react-select'
 import {
 	Drawer,
@@ -28,7 +28,6 @@ const CreateOrUpdateGiveaway = ({
 	setGiveawayFormData,
 	giveawayFormData,
 	handleSubmit,
-	onOpen,
 	isOpen,
 	onClose,
 }) => {
@@ -84,9 +83,6 @@ const CreateOrUpdateGiveaway = ({
 
 	return (
 		<>
-			<Button leftIcon={<FaPlus />} onClick={onOpen}>
-				Create Giveaway
-			</Button>
 			<Drawer
 				isOpen={isOpen}
 				placement='right'

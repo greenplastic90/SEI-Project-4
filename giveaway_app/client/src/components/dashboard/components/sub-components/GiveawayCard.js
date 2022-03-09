@@ -4,7 +4,13 @@ import { SocialIconLink } from '../../../helpers/SocialIconLink'
 import GiveawayImage from './GiveawayImage'
 import UpdateGiveaway from './UpdateGiveaway'
 
-const GiveawayCard = ({ giveaway }) => {
+const GiveawayCard = ({
+	giveaway,
+	regions,
+	categories,
+	userID,
+	setCreatedGiveaway,
+}) => {
 	return (
 		<>
 			<VStack
@@ -32,7 +38,13 @@ const GiveawayCard = ({ giveaway }) => {
 						)}
 						<SocialIconLink url={giveaway.giveaway_link} />
 					</HStack>
-					{/* <UpdateGiveaway /> */}
+					<UpdateGiveaway
+						giveaway={giveaway}
+						userID={userID}
+						regions={regions}
+						categories={categories}
+						setCreatedGiveaway={setCreatedGiveaway}
+					/>
 				</HStack>
 			</VStack>
 		</>

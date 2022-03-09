@@ -4,8 +4,10 @@ import {
 	HStack,
 	useToast,
 	useDisclosure,
+	Button,
 } from '@chakra-ui/react'
 import axios from 'axios'
+import { FaPlus } from '@react-icons/all-files/fa/FaPlus'
 import React, { useState } from 'react'
 import { getLocalToken } from '../../../enviroment/auth'
 import CreateOrUpdateGiveaway from './sub-components/CreateOrUpdateGiveaway'
@@ -82,6 +84,9 @@ const UserInfo = ({ user, regions, categories, setCreatedGiveaway }) => {
 				)}
 			</HStack>
 			<SocialLinks socialUrls={user.socials} />
+			<Button leftIcon={<FaPlus />} onClick={onOpen}>
+				Create Giveaway
+			</Button>
 			<CreateOrUpdateGiveaway
 				regions={regions}
 				categories={categories}
@@ -90,7 +95,6 @@ const UserInfo = ({ user, regions, categories, setCreatedGiveaway }) => {
 				giveawayFormData={giveawayFormData}
 				setGiveawayFormData={setGiveawayFormData}
 				handleSubmit={handleSubmit}
-				onOpen={onOpen}
 				isOpen={isOpen}
 				onClose={onClose}
 			/>
