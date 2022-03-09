@@ -6,7 +6,7 @@ import ProfilePhoto from './sub-components/ProfilePhoto'
 
 const UserInfo = ({ user, regions, categories, setCreatedGiveaway }) => {
 	return (
-		<VStack spacing={4}>
+		<VStack spacing={4} w={'full'}>
 			<ProfilePhoto photo={user.profile_image} />
 			<Heading size='lg'>{user.username}</Heading>
 			<HStack spacing={1}>

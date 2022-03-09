@@ -10,6 +10,7 @@ const GiveawayImage = ({ photo }) => {
 				border={'1px'}
 				borderColor={'gray500'}
 				borderRadius='30px'
+				p={'5px'}
 				fallbackSrc='https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg'
 			/>
 		</AspectRatio>
