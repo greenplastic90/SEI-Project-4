@@ -5,7 +5,7 @@ import { SiInstagram } from '@react-icons/all-files/si/SiInstagram'
 import { FiTwitter } from '@react-icons/all-files/fi/FiTwitter'
 import { FiTwitch } from '@react-icons/all-files/fi/FiTwitch'
 import { FiYoutube } from '@react-icons/all-files/fi/FiYoutube'
-import { AspectRatio, Link, Text } from '@chakra-ui/react'
+import { AspectRatio, Box, Link, Text } from '@chakra-ui/react'
 
 export const SocialIconLink = ({ url }) => {
 	const [icon, setIcon] = useState(<FaLink />)
@@ -49,10 +49,12 @@ export const SocialIconLink = ({ url }) => {
 	}, [socialName])
 
 	return (
-		<Link href={url} target={'_blank'}>
-			<AspectRatio ratio={1} w={8}>
-				{icon}
-			</AspectRatio>
-		</Link>
+		<Box>
+			<Link href={url} target={'_blank'}>
+				<AspectRatio ratio={1} w={8}>
+					{icon}
+				</AspectRatio>
+			</Link>
+		</Box>
 	)
 }

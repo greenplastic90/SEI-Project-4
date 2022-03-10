@@ -73,7 +73,7 @@ const UserInfo = ({ user, regions, categories, setCreatedGiveaway }) => {
 		}
 	}
 	return (
-		<VStack spacing={4} w={'full'}>
+		<VStack spacing={4} w={'full'} boxShadow='dark-lg' borderRadius={30}>
 			<Stack
 				w={'full'}
 				direction={['row', 'row', 'column']}

@@ -31,6 +31,7 @@ const Dashboard = ({ user, regions, categories, setCreatedGiveaway }) => {
 				<>
 					<SimpleGrid
 						columns={4}
+						rows={2}
 						rowGap={10}
 						columnGap={{ base: 0, md: 18 }}
 					>
@@ -53,7 +54,7 @@ const Dashboard = ({ user, regions, categories, setCreatedGiveaway }) => {
 						</GridItem>
 					</SimpleGrid>
 
-					<ExpiredGiveaways />
+					{/* <ExpiredGiveaways /> */}
 				</>
 			) : (
 				<Spinner />

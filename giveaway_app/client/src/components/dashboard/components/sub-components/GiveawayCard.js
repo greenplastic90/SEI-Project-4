@@ -1,5 +1,11 @@
-import { HStack, VStack, Text, Button, Divider } from '@chakra-ui/react'
-import React from 'react'
+import {
+	HStack,
+	VStack,
+	Text,
+	Divider,
+	useColorModeValue,
+} from '@chakra-ui/react'
+import React, { useEffect, useState } from 'react'
 import { SocialIconLink } from '../../../helpers/SocialIconLink'
 import GiveawayImage from './GiveawayImage'
 import UpdateGiveaway from './UpdateGiveaway'
@@ -11,6 +17,44 @@ const GiveawayCard = ({
 	userID,
 	setCreatedGiveaway,
 }) => {
+	const bgColor = useColorModeValue('gray.200', 'gray.500')
+	const [linksBgColors, setLinksBgColor] = useState('#CBD5E0')
+	const [socialName, setSocialName] = useState('')
+	useEffect(() => {
+		const socialsNames = [
+			'facebook',
+			'instagram',
+			'twitter',
+			'twitch',
+			'youtube',
+		]
+		socialsNames.forEach((sName) => {
+			if (giveaway.giveaway_link.includes(sName)) {
+				setSocialName(sName)
+			}
+		})
+	}, [giveaway])
+	useEffect(() => {
+		switch (socialName) {
+			case 'youtube':
+				setLinksBgColor('#E53E3E')
+				return
+			case 'facebook':
+				setLinksBgColor('#4299E1')
+				return
+			case 'instagram':
+				setLinksBgColor('#D53F8C')
+				return
+			case 'twitter':
+				setLinksBgColor('#00B5D8')
+				return
+			case 'twitch':
+				setLinksBgColor('#805AD5')
+				return
+			default:
+				setLinksBgColor('#CBD5E0')
+		}
+	}, [socialName])
 	return (
 		<>
 			<VStack
@@ -20,31 +64,43 @@ const GiveawayCard = ({
 				p={'5px'}
 				px={'10px'}
 				align={'flex-start'}
+				bgColor={bgColor}
+				boxShadow='dark-lg'
 			>
-				<Text>{giveaway.name}</Text>
+				<HStack w={'full'} justify={'space-between'}>
+					<Text>{giveaway.name}</Text>
+					{userID === giveaway.owner && (
+						<UpdateGiveaway
+							giveaway={giveaway}
+							userID={userID}
+							regions={regions}
+							categories={categories}
+							setCreatedGiveaway={setCreatedGiveaway}
+						/>
+					)}
+				</HStack>
 				<Divider />
-				<HStack w={'full'} justify={'space-between'} align={'self-end'}>
-					<HStack
-						w={'full'}
-						justify={'flex-start'}
-						align={'self-end'}
-					>
-						{giveaway.giveaway_images ? (
-							<GiveawayImage
-								photo={giveaway.giveaway_images[0]}
-							/>
-						) : (
-							<GiveawayImage photo='https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg' />
-						)}
-						<SocialIconLink url={giveaway.giveaway_link} />
-					</HStack>
-					<UpdateGiveaway
-						giveaway={giveaway}
-						userID={userID}
-						regions={regions}
-						categories={categories}
-						setCreatedGiveaway={setCreatedGiveaway}
-					/>
+				<HStack
+					w={'full'}
+					justify={'space-between'}
+					bgColor={linksBgColors}
+					borderRadius={30}
+					pr={5}
+				>
+					{giveaway.giveaway_images ? (
+						<GiveawayImage
+							photo={giveaway.giveaway_images[0]}
+							id={giveaway.id}
+							bgColor={bgColor}
+						/>
+					) : (
+						<GiveawayImage
+							photo='https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg'
+							id={giveaway.id}
+							bgColor={bgColor}
+						/>
+					)}
+					<SocialIconLink url={giveaway.giveaway_link} />
 				</HStack>
 			</VStack>
 		</>
