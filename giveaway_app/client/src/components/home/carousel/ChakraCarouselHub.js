@@ -62,13 +62,12 @@ const ChakraCarouselHub = ({ giveaways }) => {
                                             {capsFirst(post.description)}
                                         </Text>
                                     </VStack>
-                                    <VStack>
+                                    <VStack maxH={'350px'}>
                                         {post.giveaway_images ? (
                                             <Image
                                                 src={post.giveaway_images[0]}
                                                 alt='Giveaway'
                                                 fallback='https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg'
-                                                maxH={'30%'}
                                             />
                                         ) : (
                                             <Image
