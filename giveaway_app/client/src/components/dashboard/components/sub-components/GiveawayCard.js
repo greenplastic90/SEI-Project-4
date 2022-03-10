@@ -83,8 +83,9 @@ const GiveawayCard = ({
 				<HStack
 					w={'full'}
 					justify={'space-between'}
+					border={'2px'}
 					bgColor={linksBgColors}
-					borderRadius={30}
+					borderRadius={32}
 					pr={5}
 				>
 					{giveaway.giveaway_images ? (

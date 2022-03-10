@@ -10,7 +10,8 @@ const ProfilePhoto = ({ photo }) => {
 				objectFit='cover'
 				border={'1px'}
 				borderColor={'gray500'}
-				borderRadius='30px'
+				borderTopLeftRadius={30}
+				borderTopRightRadius={[0, 0, 30]}
 				fallbackSrc='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnm7iKDRSxqEpHVRB5FzOEVIg_ouNU10pQ8YGgVQhY7MqLSqmEQBXo_t5dfXi5ImExW6Y&usqp=CAU'
 			/>
 		</AspectRatio>

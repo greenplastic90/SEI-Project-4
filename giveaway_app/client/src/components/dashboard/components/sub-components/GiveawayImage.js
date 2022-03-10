@@ -9,7 +9,6 @@ const GiveawayImage = ({ photo, id, bgColor }) => {
 					src={photo}
 					alt='user-photo'
 					objectFit='cover'
-					border={'1px'}
 					borderColor={'gray500'}
 					borderRadius='30px'
 					p={'5px'}

@@ -6,6 +6,7 @@ import {
 	useDisclosure,
 	Button,
 	Stack,
+	Box,
 } from '@chakra-ui/react'
 import axios from 'axios'
 import { FaPlus } from '@react-icons/all-files/fa/FaPlus'
@@ -73,15 +74,23 @@ const UserInfo = ({ user, regions, categories, setCreatedGiveaway }) => {
 		}
 	}
 	return (
-		<VStack spacing={4} w={'full'} boxShadow='dark-lg' borderRadius={30}>
+		<VStack
+			spacing={10}
+			w={'full'}
+			boxShadow='dark-lg'
+			borderRadius={30}
+			pb={'10'}
+		>
 			<Stack
 				w={'full'}
 				direction={['row', 'row', 'column']}
-				justify={'center'}
+				justify={'space-between'}
 				align={['center']}
 			>
-				<ProfilePhoto photo={user.profile_image} />
-				<VStack>
+				<Box>
+					<ProfilePhoto photo={user.profile_image} />
+				</Box>
+				<VStack w={'full'} justifySelf={'flex-start'} spacing={5}>
 					<Heading size='lg'>{user.username}</Heading>
 					<HStack spacing={1}>
 						{user.first_name && (
@@ -94,22 +103,25 @@ const UserInfo = ({ user, regions, categories, setCreatedGiveaway }) => {
 					<SocialLinks socialUrls={user.socials} />
 				</VStack>
 			</Stack>
-
-			<Button leftIcon={<FaPlus />} onClick={onOpen}>
-				Create Giveaway
-			</Button>
-			<CreateOrUpdateGiveaway
-				regions={regions}
-				categories={categories}
-				userID={user.id}
-				setCreatedGiveaway={setCreatedGiveaway}
-				giveawayFormData={giveawayFormData}
-				setGiveawayFormData={setGiveawayFormData}
-				handleSubmit={handleSubmit}
-				isOpen={isOpen}
-				onClose={onClose}
-			/>
-			<FollowerCount userList={user.followers} />
+			{user.is_verified && (
+				<>
+					<Button leftIcon={<FaPlus />} onClick={onOpen}>
+						Create Giveaway
+					</Button>
+					<CreateOrUpdateGiveaway
+						regions={regions}
+						categories={categories}
+						userID={user.id}
+						setCreatedGiveaway={setCreatedGiveaway}
+						giveawayFormData={giveawayFormData}
+						setGiveawayFormData={setGiveawayFormData}
+						handleSubmit={handleSubmit}
+						isOpen={isOpen}
+						onClose={onClose}
+					/>
+					<FollowerCount userList={user.followers} />
+				</>
+			)}
 		</VStack>
 	)
 }

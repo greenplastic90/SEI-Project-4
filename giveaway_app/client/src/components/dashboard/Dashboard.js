@@ -31,11 +31,11 @@ const Dashboard = ({ user, regions, categories, setCreatedGiveaway }) => {
 				<>
 					<SimpleGrid
 						columns={4}
-						rows={2}
+						rows={3}
 						rowGap={10}
 						columnGap={{ base: 0, md: 18 }}
 					>
-						<GridItem colSpan={userInfoColSpan}>
+						<GridItem colSpan={userInfoColSpan} rowSpan={3}>
 							<UserInfo
 								user={user}
 								regions={regions}
@@ -43,7 +43,7 @@ const Dashboard = ({ user, regions, categories, setCreatedGiveaway }) => {
 								setCreatedGiveaway={setCreatedGiveaway}
 							/>
 						</GridItem>
-						<GridItem colSpan={ActiveColSpan}>
+						<GridItem colSpan={ActiveColSpan} rowSpan={3}>
 							<ActiveGiveaways
 								userID={user.id}
 								giveaways={user.giveaways}
