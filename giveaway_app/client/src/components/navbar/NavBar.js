@@ -6,7 +6,7 @@ import SearchBar from './components/SearchBar'
 import DarkModeToggle from './components/DarkModeToggle'
 import { VStack, HStack } from '@chakra-ui/react'
 
-const NavBar = ({ isVerified }) => {
+const NavBar = ({ isVerified, setSearchText, serachText }) => {
 	const [isOpen, setIsOpen] = React.useState(false)
 
 	const toggle = () => setIsOpen(!isOpen)
@@ -16,7 +16,7 @@ const NavBar = ({ isVerified }) => {
 			<HStack justify='space-between' p={{ base: 4, md: 8 }} w='100%'>
 				<Logo />
 
-				<SearchBar />
+				<SearchBar setSearchText={setSearchText} serachText={serachText} />
 
 				<HStack spacing={4}>
 					<DarkModeToggle />
