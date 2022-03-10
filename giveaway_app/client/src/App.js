@@ -52,7 +52,7 @@ function App() {
 		if (userIDFromToken) {
 			getUser(userIDFromToken.sub)
 		}
-	}, [userIDFromToken])
+	}, [userIDFromToken, createdGiveaway])
 
 	// Get Categories
 	useEffect(() => {
@@ -120,7 +120,7 @@ function App() {
 					<Routes>
 						<Route
 							path='/'
-							element={<Home createdGiveaway={createdGiveaway}/>}
+							element={<Home createdGiveaway={createdGiveaway} />}
 						/>
 						<Route
 							path='/login'

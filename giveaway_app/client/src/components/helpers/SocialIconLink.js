@@ -11,23 +11,6 @@ export const SocialIconLink = ({ url }) => {
 	const [icon, setIcon] = useState(<FaLink />)
 	const [socialName, setSocialName] = useState('')
 
-	// const getIcon = () => {
-	// 	const socialsNames = [
-	// 		'facebook',
-	// 		'instagram',
-	// 		'twitter',
-	// 		'amazon',
-	// 		'youtube',
-	// 	]
-	// 	socialsNames.forEach((name) => {
-	// 		if (url.includes(name)) {
-	// 			console.log(url)
-	// 			setIcon(<FaLink />)
-	// 			// setIcon(name)
-	// 		}
-	// 	})
-	// }
-
 	useEffect(() => {
 		const socialsNames = [
 			'facebook',
