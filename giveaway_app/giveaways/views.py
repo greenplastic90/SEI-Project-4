@@ -84,7 +84,7 @@ class UpdateGiveAwayView(APIView):
 
     def get(self, _request, pk):
             giveaway = self.get_giveaway(pk)
-            serialized_giveaway = PopulatedGiveawaySerializer(giveaway)
+            serialized_giveaway = GiveawaySerializer(giveaway)
             return Response(serialized_giveaway.data, status=status.HTTP_200_OK)
 
     def put(self, request, pk):
