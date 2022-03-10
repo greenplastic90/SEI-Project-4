@@ -17,7 +17,7 @@ const GiveawayCard = ({
 	userID,
 	setCreatedGiveaway,
 }) => {
-	const bgColor = useColorModeValue('gray.200', 'gray.500')
+	const bgColor = useColorModeValue('gray.100', 'gray.800')
 	const [linksBgColors, setLinksBgColor] = useState('#CBD5E0')
 	const [socialName, setSocialName] = useState('')
 	useEffect(() => {
@@ -52,7 +52,7 @@ const GiveawayCard = ({
 				setLinksBgColor('#805AD5')
 				return
 			default:
-				setLinksBgColor('#CBD5E0')
+				setLinksBgColor('#A0AEC0')
 		}
 	}, [socialName])
 	return (
