@@ -25,6 +25,7 @@ const ChakraCarouselHub = ({ giveaways }) => {
                     giveaways.map((post) => (
                         <Box
                             display={'flex'}
+                            boxSizing={'border-box'}
                             key={post.id}
                             boxShadow='rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px'
                             justifyContent='space-between'
@@ -35,8 +36,8 @@ const ChakraCarouselHub = ({ giveaways }) => {
                             flex={1}
                             p={5}
                             _hover={{
-                                bg: 'lightgray',
-                                border: '1px solid #e6e6e6',
+                                border: '1px solid',
+                                transform: 'scale(102%)'
                             }}
                         >
                             <Link to={`giveaway/${post.id}`}>

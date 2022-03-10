@@ -115,7 +115,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<NavBar isVerified={user.is_verified} />
-			<Container maxW={'container.lg'} px={[3, 3, 6]} mt={10}>
+			<Container maxW={'container.lg'} px={[3, 3, 6]} mt={2}>
 				<Flex h='100vh' pb={20}>
 					<Routes>
 						<Route

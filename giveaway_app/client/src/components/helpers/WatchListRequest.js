@@ -1,26 +1,29 @@
 import axios from "axios"
 import { getLocalToken } from '../../enviroment/auth'
 
-export const WatchListRequest = async (giveawayid, user, giveaway) => {
+export const WatchListRequest = async (giveawayid, user, giveaway, ) => {
     const watchArray = user.watchlist
+    console.log('watchArray', watchArray)
     const watcherArray = giveaway.watcher_list
+    console.log('watcherArray', watcherArray)
     console.log(giveawayid)
-    if (user.following.includes(giveawayid)) {
+    console.log(watchArray.includes(giveawayid))
+    if (watchArray.includes(giveawayid)) {
         const index = watchArray.indexOf(giveawayid)
         watchArray.splice(index, 1)
 
-        const userindex = watcherArray.index(user.id)
+        const userindex = watcherArray.indexOf(user.id)
         watcherArray.splice(userindex, 1)
         console.log('remove')
     } else {
         watchArray.push(giveawayid)
-        watcherArray.push(user)
+        watcherArray.push(user.id)
         console.log('add')
 
     }
 
     console.log('Next', watchArray)
-
+    console.log('Last', watcherArray)
     try {
         const { data } = await axios.put(
             `/api/profile/${user.id}/`,
