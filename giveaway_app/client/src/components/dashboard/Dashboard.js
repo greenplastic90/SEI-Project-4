@@ -6,6 +6,7 @@ import {
 	SimpleGrid,
 	GridItem,
 	useBreakpointValue,
+	Heading,
 } from '@chakra-ui/react'
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 
@@ -25,8 +26,9 @@ const Dashboard = ({ user, regions, categories, setCreatedGiveaway }) => {
 	}, [navigate])
 
 	return (
-		<VStack w='100%'>
+		<VStack w='100%' spacing={10}>
 			{/* make this HStack its own components to use in the VUser profile page as well */}
+			<Heading>Dashboard</Heading>
 			{user ? (
 				<>
 					<SimpleGrid

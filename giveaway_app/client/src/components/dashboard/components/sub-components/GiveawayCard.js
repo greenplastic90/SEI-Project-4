@@ -87,6 +87,7 @@ const GiveawayCard = ({
 					bgColor={linksBgColors}
 					borderRadius={32}
 					pr={5}
+					boxShadow={'inner'}
 				>
 					{giveaway.giveaway_images ? (
 						<GiveawayImage
