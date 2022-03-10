@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react"
-import { VStack, HStack, Text, Heading, Image, Stack, Box, Tag, Link } from '@chakra-ui/react'
+import { VStack, HStack, Text, Heading, Image, Stack, Tag, Link } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import ProfilePhoto from "../dashboard/components/sub-components/ProfilePhoto"
 import ProfilePopover from "./showcaseComponents/ProfilePopover"
 
 import WatchListAvatars from "./showcaseComponents/WatchlistAvartas"
 
-const GiveawayShowcase = ({ giveaway }) => {
+const GiveawayShowcase = ({ giveaway, setIsGiveawayUpdate }) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -20,7 +20,7 @@ const GiveawayShowcase = ({ giveaway }) => {
                     minutes: Math.floor((difference / 1000 / 60) % 60),
                     seconds: Math.floor((difference / 1000) % 60),
                 }
-                remaining = `Time left: ${parts.days} : ${parts.hours} : ${parts.minutes} : ${parts.seconds}`
+                remaining = `Time left: ${parts.days}d - ${parts.hours} : ${parts.minutes} : ${parts.seconds}`
                 document.getElementById("countdown").innerHTML = remaining
             }
         }, 1000)
@@ -61,8 +61,8 @@ const GiveawayShowcase = ({ giveaway }) => {
                         </VStack>
                     </Stack>
                 </Stack>
-                <HStack w={'100%'}>
-                    <WatchListAvatars userlist={giveaway.watcher_list} sizeBig={true}/>
+                <HStack w={'100%'}  minH={'40px'}>
+                    <WatchListAvatars userlist={giveaway.watcher_list} sizeBig={true} giveawayId={giveaway.id} setIsGiveawayUpdate={setIsGiveawayUpdate}/>
                 </HStack>
                 <VStack w={'full'} alignItems={'flex-start'} alignContent={'flex-start'}>
                     <Heading alignSelf={'flex-start'} size={'md'}>Description</Heading>
@@ -73,7 +73,6 @@ const GiveawayShowcase = ({ giveaway }) => {
                         </Link>
                         <Tag colorScheme={'red'} size={'lg'}>End: {giveaway.end_date.slice(0, 10)}</Tag>
                     </HStack>
-
                 </VStack>
             </VStack >
         </>

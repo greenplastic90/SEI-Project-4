@@ -1,14 +1,14 @@
 import React from "react"
 import { GridItem, SimpleGrid, Image } from '@chakra-ui/react'
-import banner6 from '../../../assets/banner6.png'
+import banner7 from '../../../assets/banner7.png'
 
 const LandingBanner = () => {
 
     return (
         <>
-            <SimpleGrid columns={3} columnGap={2} w={'full'}>
+            <SimpleGrid mb={5} columns={3} columnGap={2} w={'full'}>
                 <GridItem colSpan={3}>
-                    <Image src={banner6}/>
+                    <Image src={banner7}/>
                 </GridItem>
             </SimpleGrid>
         </>
