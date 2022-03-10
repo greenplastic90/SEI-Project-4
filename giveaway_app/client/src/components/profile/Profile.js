@@ -1,28 +1,22 @@
-import { Heading } from '@chakra-ui/react'
 import React, { useLayoutEffect } from 'react'
-
 import { useNavigate } from 'react-router'
 import { userIsAuthenticated } from '../../enviroment/auth'
 import UserDisplay from '../UserDisplay'
 
-const Dashboard = ({ user, regions, categories, setCreatedGiveaway }) => {
+function Profile({ user, regions, categories }) {
 	const navigate = useNavigate()
 
 	useLayoutEffect(() => {
 		!userIsAuthenticated() && navigate('/login')
 	}, [navigate])
-
 	return (
-		<>
-			<UserDisplay
-				title='Dashboard'
-				user={user}
-				regions={regions}
-				categories={categories}
-				setCreatedGiveaway={setCreatedGiveaway}
-			/>
-		</>
+		<UserDisplay
+			title='Profile'
+			user={user}
+			regions={regions}
+			categories={categories}
+		/>
 	)
 }
 
-export default Dashboard
+export default Profile

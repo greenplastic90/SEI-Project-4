@@ -4,6 +4,7 @@ import {
 	Text,
 	Divider,
 	useColorModeValue,
+	Box,
 } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { SocialIconLink } from '../../../helpers/SocialIconLink'
@@ -65,10 +66,11 @@ const GiveawayCard = ({
 				px={'10px'}
 				align={'flex-start'}
 				bgColor={bgColor}
-				boxShadow='dark-lg'
+				boxShadow='lg'
 			>
 				<HStack w={'full'} justify={'space-between'}>
 					<Text>{giveaway.name}</Text>
+
 					{userID === giveaway.owner && (
 						<UpdateGiveaway
 							giveaway={giveaway}

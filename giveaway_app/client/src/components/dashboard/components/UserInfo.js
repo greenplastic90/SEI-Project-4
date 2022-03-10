@@ -17,7 +17,13 @@ import FollowerCount from './sub-components/FollowerCount'
 import ProfilePhoto from './sub-components/ProfilePhoto'
 import SocialLinks from './sub-components/SocialLinks'
 
-const UserInfo = ({ user, regions, categories, setCreatedGiveaway }) => {
+const UserInfo = ({
+	user,
+	regions,
+	categories,
+	setCreatedGiveaway,
+	pathName,
+}) => {
 	const [giveawayFormData, setGiveawayFormData] = useState({})
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const toast = useToast()
@@ -80,6 +86,7 @@ const UserInfo = ({ user, regions, categories, setCreatedGiveaway }) => {
 			boxShadow='dark-lg'
 			borderRadius={30}
 			pb={'10'}
+			border={'1px'}
 		>
 			<Stack
 				w={'full'}
@@ -103,7 +110,15 @@ const UserInfo = ({ user, regions, categories, setCreatedGiveaway }) => {
 					<SocialLinks socialUrls={user.socials} />
 				</VStack>
 			</Stack>
-			{user.is_verified && (
+			{pathName === '/profile' && (
+				<VStack>
+					<Heading size={'xs'} color={'red.500'}>
+						btn under construction
+					</Heading>
+					<Button leftIcon={<FaPlus />}>Update Profile</Button>
+				</VStack>
+			)}
+			{user.is_verified && pathName === '/dashboard' && (
 				<>
 					<Button leftIcon={<FaPlus />} onClick={onOpen}>
 						Create Giveaway
@@ -119,8 +134,19 @@ const UserInfo = ({ user, regions, categories, setCreatedGiveaway }) => {
 						isOpen={isOpen}
 						onClose={onClose}
 					/>
-					<FollowerCount userList={user.followers} />
 				</>
+			)}
+			{user.is_verified && pathName === '/dashboard' && (
+				<FollowerCount
+					title={'Your Followers'}
+					userList={user.followers}
+				/>
+			)}
+			{!user.is_verified && (
+				<FollowerCount
+					title={"You're Following"}
+					userList={user.followers}
+				/>
 			)}
 		</VStack>
 	)

@@ -5,6 +5,7 @@ export const VerifiedUser = () => {
 	return (
 		<>
 			<MenuItem to='/dashboard'>Dashboard</MenuItem>
+			<MenuItem to='/profile'>Profile</MenuItem>
 		</>
 	)
 }
