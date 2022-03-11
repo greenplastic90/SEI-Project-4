@@ -9,7 +9,12 @@ const config = {
 	useSystemColorMode: true,
 }
 
+const fonts = {
+	heading: 'Righteous, sans-serif',
+	body: 'Righteous, sans-serif',
+}
+
 // 3. extend the theme
-const theme = extendTheme({ config })
+const theme = extendTheme({ config, fonts })
 
 export default theme

@@ -1830,6 +1830,21 @@
   resolved "https://registry.npmjs.org/@fontsource/inter/-/inter-4.5.4.tgz"
   integrity sha512-D0icTFpt9bWvB/OEXMztYf0bhUQZoDIYpsco5C7GVfxgKDRl8Jdn3N2aHHQqwjgRUUvRuyMv8HrRM8Hrt4U52w==
 
+"@fontsource/open-sans@^4.5.5":
+  version "4.5.5"
+  resolved "https://registry.npmjs.org/@fontsource/open-sans/-/open-sans-4.5.5.tgz"
+  integrity sha512-h1oUPSQpoMnDrnzIZTVS9PPBFhWXS87v6/cd9FY2Xc+GKbOVcjPZxcvUDU1TnCie2QSoYY9aifERRV/d8JHtWQ==
+
+"@fontsource/raleway@^4.5.3":
+  version "4.5.3"
+  resolved "https://registry.npmjs.org/@fontsource/raleway/-/raleway-4.5.3.tgz"
+  integrity sha512-wJ8Rm8k5MuSnfERuL5Q1bd8Z80o3uWpC1vUmZAxcLXAY9IxnfGqZjZJ1Jd2lY1u5NaEo+zXCvHEViAIv6b1jEg==
+
+"@fontsource/righteous@^4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@fontsource/righteous/-/righteous-4.5.1.tgz#df64e11159e1e1add2b3e0fe239b5f3690f96285"
+  integrity sha512-Z8x5AJ88QcoZm+ayebWt/Ab25aVyFIlVnTui8Yb2+2xC6ZG6eCWlkUoUZbM5d+L+/nOgyx2WzlbIiSkV3pgRYw==
+
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.5"
   resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.9.5.tgz"
