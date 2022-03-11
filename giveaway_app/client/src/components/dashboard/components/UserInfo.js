@@ -129,7 +129,11 @@ const UserInfo = ({
 				)}
 				{user.is_verified && pathName === '/dashboard' && (
 					<>
-						<Button leftIcon={<FaPlus />} onClick={onOpen}>
+						<Button
+							bgColor={'orange.400'}
+							leftIcon={<FaPlus />}
+							onClick={onOpen}
+						>
 							Create Giveaway
 						</Button>
 						<CreateOrUpdateGiveaway

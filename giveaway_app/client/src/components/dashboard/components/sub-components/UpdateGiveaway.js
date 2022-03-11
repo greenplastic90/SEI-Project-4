@@ -58,6 +58,7 @@ const UpdateGiveaway = ({
 				handleSubmit={handleSubmit}
 				isOpen={isOpen}
 				onClose={onClose}
+				giveaway={giveaway}
 			/>
 		</>
 	)
