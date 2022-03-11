@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
-const SearchBar = ({ setSearchText, serachText }) => {
+const SearchBar = ({ setSearchText, serachText, colour }) => {
 	const handleChange = (e) => {
 		// console.log(e.target.value)
 		setSearchText(e.target.value)
@@ -30,7 +30,7 @@ const SearchBar = ({ setSearchText, serachText }) => {
 							state: { serachText: true },
 						}}
 					>
-						<Button h='1.75rem' size='sm' mr={2}>
+						<Button h='1.75rem' size='sm' mr={2} bg={colour}>
 							search
 						</Button>
 					</Link>

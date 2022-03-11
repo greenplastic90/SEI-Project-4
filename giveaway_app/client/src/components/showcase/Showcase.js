@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Text, HStack, VStack, Spinner, Divider } from '@chakra-ui/react'
+import { VStack, Spinner, Divider } from '@chakra-ui/react'
 import { useParams } from 'react-router'
 import axios from 'axios'
 
@@ -7,7 +7,7 @@ import axios from 'axios'
 import CommentSection from './CommentSection'
 import GiveawayShowcase from './GiveawayShowcase'
 
-const Showcase = () => {
+const Showcase = ({ colour }) => {
     const { id } = useParams()
     const [giveaway, setGiveaway] = useState(null)
     const [isNewComment, setNewComment] = useState(false)
@@ -30,9 +30,9 @@ const Showcase = () => {
         <VStack w={'full'}>
             {giveaway ?
                 <>
-                    <GiveawayShowcase giveaway={giveaway} setIsGiveawayUpdate={setIsGiveawayUpdate} />
+                    <GiveawayShowcase giveaway={giveaway} setIsGiveawayUpdate={setIsGiveawayUpdate} colour={colour} />
                     <Divider />
-                    <CommentSection giveaway={giveaway} setNewComment={setNewComment} />
+                    <CommentSection giveaway={giveaway} setNewComment={setNewComment} colour={colour} />
                 </>
                 :
                 <Spinner

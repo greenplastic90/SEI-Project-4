@@ -29,6 +29,7 @@ const MenuLinks = ({ isOpen, mdDisplay, isVerified }) => {
 				pt={[4, 4, 0, 0]}
 			>
 				<MenuItem to='/'>Home</MenuItem>
+                <MenuItem to='/explore'>Search</MenuItem>
 				{userIsAuthenticated() ? (
 					<>
 						{isVerified ? <VerifiedUser /> : <User />}

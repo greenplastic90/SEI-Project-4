@@ -4,12 +4,12 @@ import React from "react"
 import DeletePopover from './DeletePopover'
 import EditCommentPopever from "./EditCommentPopover"
 
-const CommentButtons = ({ id, setNewComment, comment }) => {
+const CommentButtons = ({ id, setNewComment, comment, colour }) => {
 
     return (
         <>
-            <EditCommentPopever setNewComment={setNewComment} comment={comment}/>
-            <DeletePopover id={id} setNewComment={setNewComment} />
+            <EditCommentPopever colour={colour} setNewComment={setNewComment} comment={comment}/>
+            <DeletePopover colour={colour} id={id} setNewComment={setNewComment} />
         </>
     )
 }

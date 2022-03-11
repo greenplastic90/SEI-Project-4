@@ -6,12 +6,12 @@ import ProfilePopover from "./showcaseComponents/ProfilePopover"
 
 import WatchListAvatars from "./showcaseComponents/WatchlistAvartas"
 
-const GiveawayShowcase = ({ giveaway, setIsGiveawayUpdate }) => {
+const GiveawayShowcase = ({ giveaway, setIsGiveawayUpdate, colour }) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
             const difference = +new Date(giveaway.end_date).valueOf() - +new Date()
-            let remaining = "Ended"
+            let remaining = "c"
 
             if (difference > 0) {
                 const parts = {
@@ -40,24 +40,28 @@ const GiveawayShowcase = ({ giveaway, setIsGiveawayUpdate }) => {
                             <Image
                                 src={giveaway.giveaway_images[0]}
                                 alt='Giveaway'
+                                borderRadius={30}
+                                boxShadow='dark-lg'
                             />
                             :
                             <Image
                                 alt='Giveaway'
                                 src='https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg'
+                                borderRadius={30}
+                                boxShadow='dark-lg'
                             />
                         }
                     </VStack>
                     <Stack align-items={'flex-start'} direction={{ md: 'column', sm: 'row' }}>
                         <VStack>
                             <ProfilePhoto photo={giveaway.owner.profile_image} />
-                            <ProfilePopover giveaway={giveaway} />
+                            <ProfilePopover giveaway={giveaway} colour={colour} />
                         </VStack>
                         <VStack w={'100%'}>
-                            <Tag w={'100%'} alignSelf={'flex-start'}>Category: {giveaway.category.name}</Tag>
-                            <Tag w={'100%'} alignSelf={'flex-start'}>Region: {giveaway.regions[0].name}</Tag>
-                            <Tag w={'100%'} id='countdown'>00:00</Tag>
-                            <Tag w={'100%'} alignSelf={'flex-start'}>Winner: {giveaway.winner}</Tag>
+                            <Tag w={'100%'} bgColor={colour} alignSelf={'flex-start'}>Category: {giveaway.category.name}</Tag>
+                            <Tag w={'100%'} bgColor={colour} alignSelf={'flex-start'}>Region: {giveaway.regions[0].name}</Tag>
+                            <Tag w={'100%'} bgColor={colour} id='countdown'>Ended</Tag>
+                            <Tag w={'100%'} bgColor={colour} alignSelf={'flex-start'}>Winner: {giveaway.winner}</Tag>
                         </VStack>
                     </Stack>
                 </Stack>
@@ -69,9 +73,9 @@ const GiveawayShowcase = ({ giveaway, setIsGiveawayUpdate }) => {
                     <Text whiteSpace={'pre-line'} textAlign={'justify'} >{giveaway.description}</Text>
                     <HStack w={'100%'} justifyContent={'space-between'}>
                         <Link href={giveaway.giveaway_link} >
-                            <Tag size={'lg'} colorScheme={'facebook'}>Go to Giveaway: <ExternalLinkIcon mx='2px' /></Tag>
+                            <Tag bgColor={colour} size={'lg'} colorScheme={'facebook'}>Go to Giveaway: <ExternalLinkIcon mx='2px' /></Tag>
                         </Link>
-                        <Tag colorScheme={'red'} size={'lg'}>End: {giveaway.end_date.slice(0, 10)}</Tag>
+                        <Tag bgColor={colour} size={'lg'}>End: {giveaway.end_date.slice(0, 10)}</Tag>
                     </HStack>
                 </VStack>
             </VStack >

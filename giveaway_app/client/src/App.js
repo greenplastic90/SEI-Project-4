@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Container, Flex } from '@chakra-ui/react'
+import { Container, Flex, useColorModeValue } from '@chakra-ui/react'
 
 // Components
 import Login from './components/auth/Login'
@@ -25,7 +25,7 @@ function App() {
 	const [categories, setCategories] = useState([{ id: null, name: '' }])
 	const [serachText, setSearchText] = useState()
 	const [createdGiveaway, setCreatedGiveaway] = useState({})
-
+    const colour = useColorModeValue('orange.300', 'orange.400')
 	// try useLayoutEffect if this works
 	useEffect(
 		() => {
@@ -120,6 +120,7 @@ function App() {
 				isVerified={user.is_verified}
 				setSearchText={setSearchText}
 				serachText={serachText}
+                colour={colour}
 			/>
 			<Container maxW={'container.xl'} px={[3, 3, 6]} mt={2}>
 				<Flex
@@ -161,7 +162,7 @@ function App() {
 								/>
 							}
 						/>
-						<Route path='/giveaway/:id' element={<Showcase />} />
+						<Route path='/giveaway/:id' element={<Showcase colour={colour}/>} />
 						<Route
 							path='/explore'
 							element={

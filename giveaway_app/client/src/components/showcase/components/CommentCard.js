@@ -5,7 +5,7 @@ import { getPayload } from '../../../enviroment/auth'
 // Components
 import CommentButtons from './CommentButtons'
 
-const CommentCard = ({ comment, setNewComment }) => {
+const CommentCard = ({ comment, setNewComment, colour }) => {
     const userIsOwner = () => {
         const payload = getPayload()
         if (!getPayload()) return
@@ -29,7 +29,7 @@ const CommentCard = ({ comment, setNewComment }) => {
                     </VStack>
                 </HStack>
                 <VStack pb={2}>
-                    {userIsOwner() === comment.owner.id && <CommentButtons comment={comment} id={comment.id} setNewComment={setNewComment} />}
+                    {userIsOwner() === comment.owner.id && <CommentButtons colour={colour} comment={comment} id={comment.id} setNewComment={setNewComment} />}
                 </VStack>
             </HStack>
             <Divider />
