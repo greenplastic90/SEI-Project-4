@@ -127,6 +127,7 @@ function App() {
 					boxShadow={'dark-lg'}
 					my={20}
 					py={10}
+					border={'1px'}
 					borderRadius={20}
 				>
 					<Routes>
