@@ -122,7 +122,13 @@ function App() {
 				serachText={serachText}
 			/>
 			<Container maxW={'container.xl'} px={[3, 3, 6]} mt={2}>
-				<Flex h='100vh' pb={20}>
+				<Flex
+					h='100vh'
+					boxShadow={'dark-lg'}
+					my={20}
+					py={10}
+					borderRadius={20}
+				>
 					<Routes>
 						<Route
 							path='/'
