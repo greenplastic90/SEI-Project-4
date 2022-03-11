@@ -3,7 +3,7 @@ import React from 'react'
 
 const ProfilePhoto = ({ photo }) => {
 	return (
-		<AspectRatio ratio={1} w={200}>
+		<AspectRatio ratio={1} w={[200, 200 , 200, 250]}>
 			<Image
 				src={photo}
 				alt='user-photo'

@@ -36,8 +36,7 @@ const ChakraCarouselHub = ({ giveaways }) => {
                             flex={1}
                             p={5}
                             _hover={{
-                                border: '1px solid',
-                                transform: 'scale(102%)'
+                                border: '1px solid'
                             }}
                         >
                             <Link to={`giveaway/${post.id}`}>

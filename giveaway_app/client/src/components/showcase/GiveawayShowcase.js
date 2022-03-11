@@ -72,7 +72,7 @@ const GiveawayShowcase = ({ giveaway, setIsGiveawayUpdate, colour }) => {
                     <Heading alignSelf={'flex-start'} size={'md'}>Description</Heading>
                     <Text whiteSpace={'pre-line'} textAlign={'justify'} >{giveaway.description}</Text>
                     <HStack w={'100%'} justifyContent={'space-between'}>
-                        <Link href={giveaway.giveaway_link} >
+                        <Link href={giveaway.giveaway_link} target={'_blank'} >
                             <Tag bgColor={colour} size={'lg'} colorScheme={'facebook'}>Go to Giveaway: <ExternalLinkIcon mx='2px' /></Tag>
                         </Link>
                         <Tag bgColor={colour} size={'lg'}>End: {giveaway.end_date.slice(0, 10)}</Tag>

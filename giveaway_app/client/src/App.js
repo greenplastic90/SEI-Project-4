@@ -170,6 +170,7 @@ function App() {
 									regions={regions}
 									text={serachText}
 									categories={categories}
+                                    colour={colour}
 								/>
 							}
 						/>

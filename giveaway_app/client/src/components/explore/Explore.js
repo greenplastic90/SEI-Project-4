@@ -18,7 +18,7 @@ import Select from 'react-select'
 //components
 import GiveawayCard from '../dashboard/components/sub-components/GiveawayCard'
 
-const Explore = ({ categories, text }) => {
+const Explore = ({ categories, text, colour }) => {
     const [allGiveaways, setAllgiveaways] = useState([])
     const [filtedGiveaways, setFilterdGiveaways] = useState([])
     const [serachText, setSearchTex] = useState(null)
@@ -68,7 +68,7 @@ const Explore = ({ categories, text }) => {
 
         if (!selectedCatagory && serachText) {
             filterProcess = filterProcess.filter((item) =>
-                item.name.includes(serachText)
+                item.name.toLowerCase().includes(serachText.toLowerCase())
             )
             setFilterdGiveaways(filterProcess)
         }
@@ -78,11 +78,11 @@ const Explore = ({ categories, text }) => {
                 (item) => item.category.name === selectedCatagory
             )
             filterProcess = filterProcess.filter((item) =>
-                item.name.includes(serachText)
+                item.name.toLowerCase().includes(serachText.toLowerCase())
             )
             setFilterdGiveaways(filterProcess)
         }
-    }, [selectedCatagory, serachText])
+    }, [selectedCatagory, serachText, allGiveaways])
 
     const handelCatagoryDropdown = (e) => {
         const catagorySelected = e.name
@@ -120,6 +120,12 @@ const Explore = ({ categories, text }) => {
         }
     }
 
+    const colourStyles = {
+        // control: () => ({ backgroundColor: "gray" })
+        option: () => ({color: "black"})
+        }
+
+
     return (
         <VStack w={'100%'}>
             <VStack
@@ -128,6 +134,7 @@ const Explore = ({ categories, text }) => {
                 py={2}
                 borderRadius={30}
                 border={'1px'}
+                style={colourStyles}
             >
                 <Heading>Search</Heading>
             </VStack>
@@ -150,10 +157,11 @@ const Explore = ({ categories, text }) => {
                         name='category'
                         placeholder='Catagory'
                         options={plusCatergories}
+                        styles={colourStyles}
                     ></Select>
                 </Box>
                 <HStack pt={3} pb={1}>
-                    <Tag h={'100%'}>Arrange by:</Tag>
+                    <Tag bgColor={colour} h={'100%'}>Arrange by:</Tag>
                     <ButtonGroup onClick={handleButton} flexWrap={'wrap'} justifyContent={'space-evenly'}>
                         <Button my={1} value={'endsSoon'}>Ends Soon</Button>
                         <Button my={1} value={'newest'}>Newest</Button>
