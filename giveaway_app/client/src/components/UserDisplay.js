@@ -62,14 +62,21 @@ const UserDisplay = ({
 							/>
 						</GridItem>
 						<GridItem colSpan={ActiveColSpan} rowSpan={3}>
-							<ActiveGiveaways
-								title={giveawaysTitle}
-								userID={user.id}
-								giveaways={user.giveaways}
-								regions={regions}
-								categories={categories}
-								setCreatedGiveaway={setCreatedGiveaway}
-							/>
+							{pathName && (
+								<ActiveGiveaways
+									title={giveawaysTitle}
+									userID={user.id}
+									giveaways={
+										pathName === '/profile'
+											? user.watchlist
+											: user.giveaways
+									}
+									regions={regions}
+									categories={categories}
+									setCreatedGiveaway={setCreatedGiveaway}
+									pathName={pathName}
+								/>
+							)}
 						</GridItem>
 					</SimpleGrid>
 

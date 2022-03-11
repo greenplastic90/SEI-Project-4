@@ -5,6 +5,7 @@ import {
 	Divider,
 	useColorModeValue,
 	Box,
+	Tooltip,
 } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { SocialIconLink } from '../../../helpers/SocialIconLink'
@@ -17,6 +18,7 @@ const GiveawayCard = ({
 	categories,
 	userID,
 	setCreatedGiveaway,
+	pathName,
 }) => {
 	const bgColor = useColorModeValue('gray.100', 'gray.800')
 	const [linksBgColors, setLinksBgColor] = useState('#CBD5E0')
@@ -69,9 +71,17 @@ const GiveawayCard = ({
 				boxShadow='lg'
 			>
 				<HStack w={'full'} justify={'space-between'}>
-					<Text>{giveaway.name}</Text>
+					<Tooltip label={giveaway.name}>
+						<Text
+							overflow={'hidden'}
+							textOverflow={'ellipsis'}
+							whiteSpace={'nowrap'}
+						>
+							{giveaway.name}
+						</Text>
+					</Tooltip>
 
-					{userID === giveaway.owner && (
+					{userID === giveaway.owner && pathName === '/dashboard' && (
 						<UpdateGiveaway
 							giveaway={giveaway}
 							userID={userID}

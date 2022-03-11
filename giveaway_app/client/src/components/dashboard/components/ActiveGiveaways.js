@@ -17,6 +17,7 @@ const ActiveGiveaways = ({
 	regions,
 	categories,
 	setCreatedGiveaway,
+	pathName,
 }) => {
 	const colSpan = useBreakpointValue([3, 3, 2])
 	return (
@@ -50,6 +51,7 @@ const ActiveGiveaways = ({
 								regions={regions}
 								categories={categories}
 								setCreatedGiveaway={setCreatedGiveaway}
+								pathName={pathName}
 							/>
 						</GridItem>
 					))

@@ -7,6 +7,7 @@ import {
 	Button,
 	Stack,
 	Box,
+	Divider,
 } from '@chakra-ui/react'
 import axios from 'axios'
 import { FaPlus } from '@react-icons/all-files/fa/FaPlus'
@@ -81,7 +82,7 @@ const UserInfo = ({
 	}
 	return (
 		<VStack
-			spacing={10}
+			spacing={5}
 			w={'full'}
 			boxShadow='dark-lg'
 			borderRadius={30}
@@ -110,44 +111,53 @@ const UserInfo = ({
 					<SocialLinks socialUrls={user.socials} />
 				</VStack>
 			</Stack>
-			{pathName === '/profile' && (
-				<VStack>
-					<Heading size={'xs'} color={'red.500'}>
-						btn under construction
-					</Heading>
-					<Button leftIcon={<FaPlus />}>Update Profile</Button>
-				</VStack>
-			)}
-			{user.is_verified && pathName === '/dashboard' && (
-				<>
-					<Button leftIcon={<FaPlus />} onClick={onOpen}>
-						Create Giveaway
-					</Button>
-					<CreateOrUpdateGiveaway
-						regions={regions}
-						categories={categories}
-						userID={user.id}
-						setCreatedGiveaway={setCreatedGiveaway}
-						giveawayFormData={giveawayFormData}
-						setGiveawayFormData={setGiveawayFormData}
-						handleSubmit={handleSubmit}
-						isOpen={isOpen}
-						onClose={onClose}
+
+			<Divider />
+			<Stack
+				w={'full'}
+				direction={['row', 'row', 'column']}
+				align={'center'}
+				justify={'space-around'}
+			>
+				{pathName === '/profile' && (
+					<VStack>
+						<Heading size={'xs'} color={'red.500'}>
+							btn under construction
+						</Heading>
+						<Button leftIcon={<FaPlus />}>Update Profile</Button>
+					</VStack>
+				)}
+				{user.is_verified && pathName === '/dashboard' && (
+					<>
+						<Button leftIcon={<FaPlus />} onClick={onOpen}>
+							Create Giveaway
+						</Button>
+						<CreateOrUpdateGiveaway
+							regions={regions}
+							categories={categories}
+							userID={user.id}
+							setCreatedGiveaway={setCreatedGiveaway}
+							giveawayFormData={giveawayFormData}
+							setGiveawayFormData={setGiveawayFormData}
+							handleSubmit={handleSubmit}
+							isOpen={isOpen}
+							onClose={onClose}
+						/>
+					</>
+				)}
+				{user.is_verified && pathName === '/dashboard' && (
+					<FollowerCount
+						title={'Your Followers'}
+						userList={user.followers}
 					/>
-				</>
-			)}
-			{user.is_verified && pathName === '/dashboard' && (
-				<FollowerCount
-					title={'Your Followers'}
-					userList={user.followers}
-				/>
-			)}
-			{!user.is_verified && (
-				<FollowerCount
-					title={"You're Following"}
-					userList={user.followers}
-				/>
-			)}
+				)}
+				{!user.is_verified && (
+					<FollowerCount
+						title={"You're Following"}
+						userList={user.followers}
+					/>
+				)}
+			</Stack>
 		</VStack>
 	)
 }
