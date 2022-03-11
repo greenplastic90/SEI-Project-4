@@ -1,4 +1,1 @@
-[
-	{ "model": "regions.region", "pk": 1, "fields": { "name": "NA" } },
-	{ "model": "regions.region", "pk": 2, "fields": { "name": "EU" } }
-]
+[{"model": "regions.region", "pk": 1, "fields": {"name": "NA"}}, {"model": "regions.region", "pk": 2, "fields": {"name": "EU"}}, {"model": "regions.region", "pk": 3, "fields": {"name": "SA"}}]
