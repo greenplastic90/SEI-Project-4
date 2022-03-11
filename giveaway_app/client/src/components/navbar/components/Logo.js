@@ -6,7 +6,7 @@ const Logo = () => {
     const navigate = useNavigate()
 	return (
 		<Box>
-			<Text fontSize='lg' fontWeight='bold'onClick={() => navigate('/')} cursor={'pointer'}>
+			<Text fontSize='lg' fontWeight='bold'onClick={() => navigate('/')} cursor={'pointer'} _hover={{textDecoration: 'underline'}}>
 				Giveaway Bae
 			</Text>
 		</Box>

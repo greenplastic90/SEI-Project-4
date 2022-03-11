@@ -12,7 +12,7 @@ import { getPayload, userIsAuthenticated } from "../../../enviroment/auth"
 import axios from "axios"
 
 
-const ProfilePopover = ({ giveaway }) => {
+const ProfilePopover = ({ giveaway, colour }) => {
     const [isFollowed, setIsFollowed] = useState(false)
     const [user, setUser] = useState(null)
     const payload = getPayload()
@@ -58,7 +58,7 @@ const ProfilePopover = ({ giveaway }) => {
                 flip={true}
             >
                 <PopoverTrigger>
-                    <Button variant={'ghost'}><Tag alignSelf={'left'} variant={'solid'}>By: {giveaway.owner.username}</Tag></Button>
+                    <Button variant={'ghost'}><Tag bgColor={colour} alignSelf={'left'} variant={'solid'}>By: {giveaway.owner.username}</Tag></Button>
                 </PopoverTrigger>
                 <PopoverContent w={'fit-content'}>
                     <PopoverArrow />

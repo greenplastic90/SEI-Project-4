@@ -12,7 +12,7 @@ import {
     Button
 } from '@chakra-ui/react'
 
-const DeletePopover = ({ id, setNewComment }) => {
+const DeletePopover = ({ id, setNewComment, colour }) => {
     const handleDelete = async () => {
         try {
             const res = await axios.delete(
@@ -36,7 +36,7 @@ const DeletePopover = ({ id, setNewComment }) => {
         <>
             <Popover>
                 <PopoverTrigger>
-                    <Button size={'sm'}><FiDelete /></Button>
+                    <Button bgColor={colour} size={'sm'}><FiDelete /></Button>
                 </PopoverTrigger>
                 <PopoverContent>
                     <PopoverArrow />

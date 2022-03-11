@@ -15,7 +15,7 @@ import { FaEdit } from "@react-icons/all-files/fa/FaEdit"
 import { getLocalToken } from '../../../enviroment/auth'
 import { useDisclosure } from '@chakra-ui/react'
 
-const EditCommentPopever = ({ comment, setNewComment, setIsEditForm }) => {
+const EditCommentPopever = ({ comment, setNewComment, setIsEditForm, colour }) => {
     const { onOpen, onClose, isOpen } = useDisclosure()
     const [formData, setFormData] = useState({
         text: ''
@@ -64,7 +64,7 @@ const EditCommentPopever = ({ comment, setNewComment, setIsEditForm }) => {
                 closeOnEsc={true}
             >
                 <PopoverTrigger>
-                    <Button size={'sm'}><FaEdit /></Button>
+                    <Button bgColor={colour} size={'sm'}><FaEdit /></Button>
                 </PopoverTrigger>
                 <PopoverContent>
                     <PopoverArrow />

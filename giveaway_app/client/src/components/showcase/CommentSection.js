@@ -7,19 +7,19 @@ import CommentCard from './components/CommentCard'
 import NewComment from './components/NewComment'
 import { userIsAuthenticated } from '../../enviroment/auth'
 
-const CommentSection = ({ giveaway, setNewComment }) => {
+const CommentSection = ({ giveaway, setNewComment, colour }) => {
     const navigate = useNavigate()
     return (
         <VStack w={'full'} >
             {userIsAuthenticated() && <NewComment setNewComment={setNewComment} />}
             {giveaway.comments && giveaway.comments.length > 0 ? giveaway.comments.map(comment => (
-                <CommentCard key={comment.id} comment={comment} setNewComment={setNewComment} />
+                <CommentCard key={comment.id} comment={comment} setNewComment={setNewComment} colour={colour} />
             ))
                 :
                 <Tag colorScheme={'messenger'}>Be the first to comment!</Tag>
             }
-            {giveaway.comments && giveaway.comments.length < 1 && !userIsAuthenticated() && <Button onClick={() => { navigate('/login') }} colorScheme={'messenger'}>Log In</Button>}
-            {giveaway.comments && giveaway.comments.length > 0 && !userIsAuthenticated() && <Button onClick={() => { navigate('/login') }} colorScheme={'messenger'}>Log In to comment</Button>}
+            {giveaway.comments && giveaway.comments.length < 1 && !userIsAuthenticated() && <Button bgColor={colour} onClick={() => { navigate('/login') }} colorScheme={'messenger'}>Log In</Button>}
+            {giveaway.comments && giveaway.comments.length > 0 && !userIsAuthenticated() && <Button bgColor={colour} onClick={() => { navigate('/login') }} colorScheme={'messenger'}>Log In to comment</Button>}
         </VStack>
     )
 }
