@@ -123,10 +123,10 @@ function App() {
 			/>
 			<Container maxW={'container.xl'} px={[3, 3, 6]} mt={2}>
 				<Flex
-					h='100vh'
 					boxShadow={'dark-lg'}
-					my={20}
+					my={10}
 					py={10}
+					px={5}
 					border={'1px'}
 					borderRadius={20}
 				>
