@@ -165,11 +165,11 @@ const Register = ({ regions }) => {
 						py={3}
 					>
 						<Stack direction='row' justify={'space-around'}>
-							<Radio value={true} colorScheme='orange.400'>
-								Business Account
-							</Radio>
 							<Radio value={false} colorScheme='orange.400'>
 								User Account
+							</Radio>
+							<Radio value={true} colorScheme='orange.400'>
+								Business Account
 							</Radio>
 						</Stack>
 					</RadioGroup>
