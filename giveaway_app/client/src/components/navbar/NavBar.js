@@ -12,14 +12,14 @@ const NavBar = ({ isVerified, setSearchText, serachText, colour }) => {
 	const toggle = () => setIsOpen(!isOpen)
 
 	return (
-		<VStack as='nav' borderBottom={'1px'}>
+		<VStack as='nav' boxShadow={'lg'}>
 			<HStack justify='space-between' p={{ base: 4, md: 8 }} w='100%'>
 				<Logo />
 
 				<SearchBar
 					setSearchText={setSearchText}
 					serachText={serachText}
-                    colour={colour}
+					colour={colour}
 				/>
 
 				<HStack spacing={4}>

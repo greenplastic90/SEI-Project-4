@@ -61,7 +61,6 @@ const GiveawayCard = ({
 	return (
 		<>
 			<VStack
-				border={'1px'}
 				borderRadius={'10px'}
 				w={'full'}
 				p={'5px'}

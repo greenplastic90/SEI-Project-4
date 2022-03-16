@@ -25,7 +25,7 @@ function App() {
 	const [categories, setCategories] = useState([{ id: null, name: '' }])
 	const [serachText, setSearchText] = useState()
 	const [createdGiveaway, setCreatedGiveaway] = useState({})
-    const colour = useColorModeValue('orange.300', 'orange.400')
+	const colour = useColorModeValue('orange.300', 'orange.400')
 	// try useLayoutEffect if this works
 	useEffect(
 		() => {
@@ -120,7 +120,7 @@ function App() {
 				isVerified={user.is_verified}
 				setSearchText={setSearchText}
 				serachText={serachText}
-                colour={colour}
+				colour={colour}
 			/>
 			<Container maxW={'container.xl'} px={[3, 3, 6]} mt={2}>
 				<Flex
@@ -128,7 +128,6 @@ function App() {
 					my={10}
 					py={10}
 					px={5}
-					border={'1px'}
 					borderRadius={20}
 				>
 					<Routes>
@@ -162,7 +161,10 @@ function App() {
 								/>
 							}
 						/>
-						<Route path='/giveaway/:id' element={<Showcase colour={colour}/>} />
+						<Route
+							path='/giveaway/:id'
+							element={<Showcase colour={colour} />}
+						/>
 						<Route
 							path='/explore'
 							element={
@@ -170,7 +172,7 @@ function App() {
 									regions={regions}
 									text={serachText}
 									categories={categories}
-                                    colour={colour}
+									colour={colour}
 								/>
 							}
 						/>
