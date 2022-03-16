@@ -139,7 +139,10 @@ function App() {
 							path='/login'
 							element={<Login setIsLoggedIn={setIsLoggedIn} />}
 						/>
-						<Route path='/register' element={<Register />} />
+						<Route
+							path='/register'
+							element={<Register regions={regions} />}
+						/>
 						<Route
 							path='/dashboard'
 							element={
