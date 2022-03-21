@@ -1,3 +1,4 @@
+from trace import Trace
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
 
@@ -32,7 +33,8 @@ class Giveaway(models.Model):
     )
     regions = models.ManyToManyField(
         "regions.Region",
-        related_name="giveaways"
+        related_name="giveaways",
+        default=1
     )
 
     def __str__(self):

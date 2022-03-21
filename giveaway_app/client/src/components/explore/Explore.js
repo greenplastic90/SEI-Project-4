@@ -122,8 +122,11 @@ const Explore = ({ categories, text, colour }) => {
 
     const colourStyles = {
         // control: () => ({ backgroundColor: "gray" })
-        option: () => ({color: "black"})
-        }
+        option: () => ({
+            color: "black",
+            cursor: 'pointer'
+        })
+    }
 
 
     return (

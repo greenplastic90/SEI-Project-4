@@ -122,7 +122,7 @@ function App() {
 				serachText={serachText}
                 colour={colour}
 			/>
-			<Container maxW={'container.xl'} px={[3, 3, 6]} mt={2}>
+			<Container maxW={'container.xl'} px={[3, 3, 6]} mt={32}>
 				<Flex
 					boxShadow={'dark-lg'}
 					my={10}
