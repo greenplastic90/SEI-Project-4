@@ -43,7 +43,7 @@ const UpdateGiveaway = ({
 
 	return (
 		<>
-			<Button size={'sm'} onClick={onOpen}>
+			<Button size={'sm'} onClick={onOpen} bgColor={'orange.400'}>
 				<AspectRatio ratio={1} w={6}>
 					<FaEdit />
 				</AspectRatio>

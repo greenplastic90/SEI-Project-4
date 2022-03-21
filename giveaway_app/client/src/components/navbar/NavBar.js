@@ -19,7 +19,7 @@ const NavBar = ({ isVerified, setSearchText, serachText, colour }) => {
 				<SearchBar
 					setSearchText={setSearchText}
 					serachText={serachText}
-                    colour={colour}
+					colour={colour}
 				/>
 
 				<HStack spacing={4}>

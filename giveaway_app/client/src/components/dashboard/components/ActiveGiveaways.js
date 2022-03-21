@@ -21,7 +21,7 @@ const ActiveGiveaways = ({
 }) => {
 	const colSpan = useBreakpointValue([3, 3, 2])
 	return (
-		<VStack w={'full'} spacing={10}>
+		<VStack w={'full'} spacing={[10, 10, 20]}>
 			<VStack
 				boxShadow={'dark-lg'}
 				p={3}

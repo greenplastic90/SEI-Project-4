@@ -20,7 +20,7 @@ const GiveawayCard = ({
 	setCreatedGiveaway,
 	pathName,
 }) => {
-	const bgColor = useColorModeValue('gray.100', 'gray.800')
+	const bgColor = useColorModeValue('white', 'gray.800')
 	const [linksBgColors, setLinksBgColor] = useState('#CBD5E0')
 	const [socialName, setSocialName] = useState('')
 	useEffect(() => {
@@ -61,7 +61,6 @@ const GiveawayCard = ({
 	return (
 		<>
 			<VStack
-				border={'1px'}
 				borderRadius={'10px'}
 				w={'full'}
 				p={'5px'}
