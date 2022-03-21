@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/static/css/main.50af2f9d.css",
+    "main.js": "/static/js/main.a55b0d71.js",
+    "static/media/banner9.png": "/static/media/banner9.058fb87579f381cbd699.png",
+    "static/media/inter-all-500-normal.woff": "/static/media/inter-all-500-normal.127f77a7657a6b47cf38.woff",
+    "static/media/open-sans-all-700-normal.woff": "/static/media/open-sans-all-700-normal.3499b9716301bd3c513c.woff",
+    "static/media/raleway-all-400-normal.woff": "/static/media/raleway-all-400-normal.8745d609142c140d7bdc.woff",
+    "static/media/inter-latin-ext-500-normal.woff2": "/static/media/inter-latin-ext-500-normal.29df4aa934ecc9462070.woff2",
+    "static/media/inter-latin-500-normal.woff2": "/static/media/inter-latin-500-normal.f8a10326828318d2245e.woff2",
+    "static/media/inter-cyrillic-ext-500-normal.woff2": "/static/media/inter-cyrillic-ext-500-normal.54de81abbcf869efd1dc.woff2",
+    "static/media/inter-greek-500-normal.woff2": "/static/media/inter-greek-500-normal.75a1d3c8eb035b420ce6.woff2",
+    "static/media/raleway-latin-400-normal.woff2": "/static/media/raleway-latin-400-normal.d0033942a11996c40380.woff2",
+    "static/media/righteous-all-400-normal.woff": "/static/media/righteous-all-400-normal.89b35d4247a221738fea.woff",
+    "static/media/inter-cyrillic-500-normal.woff2": "/static/media/inter-cyrillic-500-normal.3164eabdbb931859ae7c.woff2",
+    "static/media/open-sans-cyrillic-ext-700-normal.woff2": "/static/media/open-sans-cyrillic-ext-700-normal.3c59ade8b77934a45b30.woff2",
+    "static/media/open-sans-latin-700-normal.woff2": "/static/media/open-sans-latin-700-normal.166dc5efb248e5752096.woff2",
+    "static/media/raleway-latin-ext-400-normal.woff2": "/static/media/raleway-latin-ext-400-normal.0d87da54ef6ba3feba64.woff2",
+    "static/media/open-sans-latin-ext-700-normal.woff2": "/static/media/open-sans-latin-ext-700-normal.45e8e1ac313ddc44a973.woff2",
+    "static/media/righteous-latin-400-normal.woff2": "/static/media/righteous-latin-400-normal.ff971242700f520e3f61.woff2",
+    "static/media/raleway-cyrillic-ext-400-normal.woff2": "/static/media/raleway-cyrillic-ext-400-normal.fb4e05231f89be643737.woff2",
+    "static/media/raleway-cyrillic-400-normal.woff2": "/static/media/raleway-cyrillic-400-normal.cb4f2846a9e6286936a1.woff2",
+    "static/media/inter-greek-ext-500-normal.woff2": "/static/media/inter-greek-ext-500-normal.c2a24f65668ba8f3fdf7.woff2",
+    "static/media/open-sans-cyrillic-700-normal.woff2": "/static/media/open-sans-cyrillic-700-normal.1c275ed85d097d423a5a.woff2",
+    "static/media/inter-vietnamese-500-normal.woff2": "/static/media/inter-vietnamese-500-normal.c15997f1d022aff0bd00.woff2",
+    "static/media/open-sans-greek-700-normal.woff2": "/static/media/open-sans-greek-700-normal.8fe2fcd1cc0060a5abe8.woff2",
+    "static/media/open-sans-hebrew-700-normal.woff2": "/static/media/open-sans-hebrew-700-normal.87a0af0cdd297129379f.woff2",
+    "static/media/open-sans-vietnamese-700-normal.woff2": "/static/media/open-sans-vietnamese-700-normal.f7029b9ddd8d28129255.woff2",
+    "static/media/righteous-latin-ext-400-normal.woff2": "/static/media/righteous-latin-ext-400-normal.c8eff68a7456cce7e462.woff2",
+    "static/media/raleway-vietnamese-400-normal.woff2": "/static/media/raleway-vietnamese-400-normal.8efa7e0a2615cd431d28.woff2",
+    "static/media/open-sans-greek-ext-700-normal.woff2": "/static/media/open-sans-greek-ext-700-normal.6ec764fe61947b88ec49.woff2",
+    "index.html": "/index.html",
+    "main.50af2f9d.css.map": "/static/css/main.50af2f9d.css.map",
+    "main.a55b0d71.js.map": "/static/js/main.a55b0d71.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.50af2f9d.css",
+    "static/js/main.a55b0d71.js"
+  ]
+}
