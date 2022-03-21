@@ -158,12 +158,7 @@ const Register = ({ regions }) => {
 							isRequired
 						/>
 					</FormControl>
-					<RadioGroup
-						onChange={handelAccountType}
-						value={formData.is_verified}
-						size='md'
-						py={3}
-					>
+					<RadioGroup onChange={handelAccountType} size='md' py={3}>
 						<Stack direction='row' justify={'space-around'}>
 							<Radio value={false} colorScheme='orange.400'>
 								User Account
